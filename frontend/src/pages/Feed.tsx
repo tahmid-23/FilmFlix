@@ -7,8 +7,13 @@ export default function Feed({ props }: any) {
   return (
     <>
       <Container fluid>
-        <MainNav page="Feed"></MainNav>1<h1>Friend Feed</h1>
-        <FeedBox />
+        <MainNav page="Feed"></MainNav>
+        <Container>
+          <h1 style={{ marginTop: '10px' }}>
+            <b>Friend Feed</b>
+          </h1>
+          <FeedBox />
+        </Container>
       </Container>
     </>
   );
