@@ -19,7 +19,7 @@ export default function HomePage({props}: any) {
         }}
         fluid> 
         
-            <MainNav></MainNav>
+            <MainNav page="HomePage"></MainNav>
         </Container>
         </>
     )
