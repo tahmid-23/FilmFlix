@@ -3,7 +3,8 @@ import '../main.css';
 import MainNav from '../components/MainNav';
 
 import {AiOutlineUserAdd} from 'react-icons/ai'
-// Add typing for props when necessary
+import ProfileCard from '../components/ProfileCard';
+
 export default function Friends({ props }: any) {
   return (
     <>
@@ -19,7 +20,11 @@ export default function Friends({ props }: any) {
                 <AiOutlineUserAdd size={40}></AiOutlineUserAdd>
             </Button>
           </div>
+
+          <ProfileCard name="johan" email="johanmathew.george@gmail.com" bio="hello"></ProfileCard>
       </Container>
+
+
     </>
   );
 }
