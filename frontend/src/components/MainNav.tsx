@@ -15,6 +15,11 @@ function BasicLink({ tab }: { tab: string }) {
   );
 }
 
+const navTabs: Record<string, string[]> = {
+  "Friends": ["Feed", "Friends", "Logout"],
+  "Feed": ["Home", "Friends", "Logout"]
+}
+
 export default function MainNav({ page }: Page) {
   const { loginWithRedirect } = useAuth0();
 
@@ -35,11 +40,12 @@ export default function MainNav({ page }: Page) {
       </Nav.Link>
     ];
   } else {
-    navLinks = [
-      <BasicLink tab="Home" />,
-      <BasicLink tab="Friends" />,
-      <BasicLink tab="Logout" />
-    ];
+
+    console.log("page"); 
+
+    navLinks = navTabs[page].map((tab:string) => {
+      return <BasicLink tab={tab}/>
+    }); 
   }
 
   return (
