@@ -3,6 +3,7 @@ import './App.css';
 import { Container } from 'react-bootstrap';
 import HomePage from './pages/HomePage';
 import MainNav from './components/MainNav';
+import Auth0ProviderWithNavigate from './Auth0ProviderWithNavigate';
 
 const App = () => {
   return (
@@ -18,12 +19,14 @@ const App = () => {
     >
       <MainNav></MainNav>
       <BrowserRouter>
-        <Routes>
-          <Route path="/">
-            <Route index element={<HomePage />} />
-            <Route path="diet" element={<></>} />
-          </Route>
-        </Routes>
+        <Auth0ProviderWithNavigate>
+          <Routes>
+            <Route path="/">
+              <Route index element={<HomePage />} />
+              <Route path="diet" element={<></>} />
+            </Route>
+          </Routes>
+        </Auth0ProviderWithNavigate>
       </BrowserRouter>
     </Container>
   );
