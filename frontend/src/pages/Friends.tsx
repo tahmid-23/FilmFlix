@@ -9,28 +9,16 @@ export default function Friends({ props }: any) {
     <>
       <Container fluid>
         <MainNav page="Friends"></MainNav>
-        <Container>
 
-          <Row style={{marginTop: "10vw"}} className="d-flex align-items-center" >
-            <Col xs lg = {5}>
-              <h1 style={{fontSize:70, color:"white"}}>
-                Friends
-              </h1>
-            </Col>
 
-            <Col xs lg = {1}>
+          <div style={{display:"flex", marginTop: "12vh", marginLeft:"10vw"}}>
+             <h1 style={{fontSize:70, color:"white", marginRight:"3vw"}}>
+              Friends
+            </h1>
             <Button>
-              <AiOutlineUserAdd backgroundColor="black"></AiOutlineUserAdd>
+                <AiOutlineUserAdd size={40}></AiOutlineUserAdd>
             </Button>
-            </Col>
-
-            <Col xs lg = {6}>
-            </Col>
-            
-
-          </Row>
-
-        </Container>
+          </div>
       </Container>
     </>
   );
