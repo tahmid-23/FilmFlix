@@ -7,11 +7,9 @@ export default function Feed({ props }: any) {
   return (
     <>
       <Container fluid>
-        <MainNav page="Feed"></MainNav>
-
-        <p>THIS IS THE FEED</p>
+        <MainNav page="Feed"></MainNav>1<h1>Friend Feed</h1>
+        <FeedBox />
       </Container>
-      <FeedBox />
     </>
   );
 }

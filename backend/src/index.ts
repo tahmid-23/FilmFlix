@@ -14,6 +14,7 @@ app.get('/', (_req, res) => {
 const pool = createPool({
   host: 'localhost',
   user: 'hackumbc',
+  database: 'hackumbc',
   password: 'hackumbc'
 });
 
@@ -47,12 +48,17 @@ async function getAccountIdOrCreate(connection: PoolConnection, sub: string) {
 app.get('/api/user/:id', async (req: Request<{ id: number }>, res) => {
   const connection = await pool.getConnection();
   try {
-    const account = (
-      await connection.query(
-        'SELECT name, bio FROM account WHERE account_id = ?',
-        [req.params.id]
-      )
-    )[0];
+    const accounts = await connection.query(
+      'SELECT name, bio FROM account WHERE account_id = ?',
+      [req.params.id]
+    );
+
+    if (accounts.length === 0) {
+      res.sendStatus(404);
+      return;
+    }
+
+    const account = accounts[0];
 
     const reviews = await connection.query(
       'SELECT review_id, movie_title, rating, description, timestamp FROM review WHERE account_id = ?',
@@ -70,7 +76,8 @@ app.get('/api/user/:id', async (req: Request<{ id: number }>, res) => {
       reviews: reviews,
       watchList: watchList
     });
-  } catch {
+  } catch (e) {
+    console.error(e);
     res.sendStatus(500);
   } finally {
     connection.end();
@@ -93,6 +100,9 @@ app.get('/api/friends', async (req, res) => {
     );
 
     res.json(rows);
+  } catch (e) {
+    console.error(e);
+    res.sendStatus(500);
   } finally {
     connection.end();
   }
@@ -131,6 +141,9 @@ app.get('/api/feed', async (req, res) => {
     }
 
     res.json(result);
+  } catch (e) {
+    console.error(e);
+    res.sendStatus(500);
   } finally {
     connection.end();
   }
@@ -160,7 +173,8 @@ app.post('/api/bio', async (req: RequestWithBody<BioBody>, res) => {
     );
 
     res.sendStatus(200);
-  } catch {
+  } catch (e) {
+    console.error(e);
     res.sendStatus(500);
   } finally {
     connection.end();
@@ -195,6 +209,9 @@ app.post('/api/add-review', async (req: RequestWithBody<AddMovieBody>, res) => {
     );
 
     res.sendStatus(200);
+  } catch (e) {
+    console.error(e);
+    res.sendStatus(500);
   } finally {
     connection.end();
   }
@@ -223,6 +240,9 @@ app.post(
       );
 
       res.sendStatus(200);
+    } catch (e) {
+      console.error(e);
+      res.sendStatus(500);
     } finally {
       connection.end();
     }
