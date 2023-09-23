@@ -1,6 +1,6 @@
 import { Container } from 'react-bootstrap';
 import MainNav from '../components/MainNav';
-import FeedBox from '../components/FeedBox';
+import FriendPopup from '../components/FriendPopup';
 
 // Add typing for props when necessary
 export default function Friends({ props }: any) {
@@ -17,7 +17,7 @@ export default function Friends({ props }: any) {
         fluid
       >
         <MainNav page="Friends"></MainNav>
-        <FeedBox />
+        <FriendPopup />
       </Container>
     </>
   );
