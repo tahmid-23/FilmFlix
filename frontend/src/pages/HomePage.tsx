@@ -7,24 +7,20 @@ import MainNav from '../components/MainNav'
 export default function HomePage({props}: any) {
 
     return (
-
         <>
-        <Container>
 
-
-            <Row>
-                <Col>
-                    <Button>
-                        
-                    </Button>
-                </Col>
-            </Row>
-
-            <Container></Container>
+        <Container
+            className=""
+            style={{
+            width: '100vw',
+            height: '53vw',
+            backgroundColor: 'black',
+            margin: 0
+        }}
+        fluid> 
+        
+            <MainNav></MainNav>
         </Container>
         </>
     )
-
-
-
 }
