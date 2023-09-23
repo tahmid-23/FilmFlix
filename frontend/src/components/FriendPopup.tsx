@@ -4,19 +4,18 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-export default function App() {
-  const [showModal, setShowModal] = useState(false);
+interface FriendPopupInput {
+  setVisible: Function, 
+  show: boolean
+}
+export default function FriendPopup({show, setVisible} : FriendPopupInput) {
 
-  const handleClose = () => setShowModal(false);
-  const handleShow = () => setShowModal(true);
+  console.log(show); 
 
   return (
     <div className="text-center">
-      <Button variant="primary" onClick={handleShow}>
-        Add Friends
-      </Button>
 
-      <Modal show={showModal} onHide={handleClose} centered>
+      <Modal show={show} onHide={()=> {setVisible(false)}} centered>
         <Modal.Header closeButton>
           <Modal.Title>Search for a user:</Modal.Title>
         </Modal.Header>
@@ -29,10 +28,10 @@ export default function App() {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={()=>setVisible(false)}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={()=>alert("Code this")}>
             Search
           </Button>
         </Modal.Footer>
