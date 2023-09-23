@@ -5,16 +5,7 @@ import MainNav from '../components/MainNav';
 export default function LandingPage({ props }: any) {
   return (
     <>
-      <Container
-        className=""
-        style={{
-          width: '100vw',
-          height: '53vw',
-          backgroundColor: 'black',
-          margin: 0
-        }}
-        fluid
-      >
+      <Container fluid>
         <MainNav page="LandingPage"></MainNav>
       </Container>
     </>

@@ -1,4 +1,5 @@
 import { Container } from 'react-bootstrap';
+import '../main.css';
 import MainNav from '../components/MainNav';
 import FeedBox from '../components/FeedBox';
 
@@ -6,16 +7,7 @@ import FeedBox from '../components/FeedBox';
 export default function Friends({ props }: any) {
   return (
     <>
-      <Container
-        className=""
-        style={{
-          width: '100vw',
-          height: '53vw',
-          backgroundColor: 'black',
-          margin: 0
-        }}
-        fluid
-      >
+      <Container fluid>
         <MainNav page="Friends"></MainNav>
         <FeedBox />
       </Container>
