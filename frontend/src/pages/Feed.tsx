@@ -1,27 +1,18 @@
-import {Container, Row, Col, Button} from 'react-bootstrap'
-import MainNav from '../components/MainNav'
-
-
+import { Container } from 'react-bootstrap';
+import '../main.css';
+import MainNav from '../components/MainNav';
+import FeedBox from '../components/FeedBox';
 
 // Add typing for props when necessary
-export default function Feed({props}: any) {
+export default function Feed({ props }: any) {
+  return (
+    <>
+      <Container fluid>
+        <MainNav page="Feed"></MainNav>
 
-    return (
-        <>
-        <Container 
-            className=""
-            style={{
-            width: '100vw',
-            height: '53vw',
-            backgroundColor: 'black',
-            margin: 0
-        }}
-        fluid> 
-            <MainNav page="Feed"></MainNav>
-
-
-            <p>THIS IS THE FEED</p>
-        </Container>
-        </>
-    )
+        <h1>Friend Feed</h1>
+        <FeedBox />
+      </Container>
+    </>
+  );
 }
