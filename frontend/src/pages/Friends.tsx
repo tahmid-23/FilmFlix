@@ -28,8 +28,7 @@ export default function Friends({ props }: any) {
 
             <FriendPopup show={show} setVisible={showPopup}></FriendPopup>
           </div>
-
-          <ProfileCard name="johan" email="johanmathew.george@gmail.com" bio="hello"></ProfileCard>
+          
       </Container>
 
 
