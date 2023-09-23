@@ -19,7 +19,7 @@ export default function MainNav({ page }: Page) {
   const { loginWithRedirect } = useAuth0();
 
   let navLinks: any[];
-  if (page === 'HomePage') {
+  if (page === 'LandingPage') {
     navLinks = [
       <Nav.Link
         style={{ paddingRight: 35 }}
