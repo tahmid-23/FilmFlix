@@ -1,6 +1,5 @@
 import { Container } from 'react-bootstrap';
 import MainNav from '../components/MainNav';
-import FeedBox from '../components/FeedBox';
 
 // Add typing for props when necessary
 export default function LandingPage({ props }: any) {
@@ -17,7 +16,6 @@ export default function LandingPage({ props }: any) {
         fluid
       >
         <MainNav page="LandingPage"></MainNav>
-        <FeedBox />
       </Container>
     </>
   );
