@@ -18,7 +18,7 @@ const Auth0ProviderWithNavigate = ({ children }: PropsWithChildren) => {
       clientId="wL7V7wgXmF9iRDakEr4Mpqz3KJW8dkCs"
       authorizationParams={{
         audience: 'HackUMBC',
-        redirect_uri: window.location.origin + '/home'
+        redirect_uri: window.location.origin + '/feed'
       }}
       onRedirectCallback={onRedirectCallback}
       useRefreshTokens
