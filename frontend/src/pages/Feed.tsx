@@ -1,4 +1,4 @@
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import MainNav from '../components/MainNav';
 import FeedBox from '../components/FeedBox';
 
