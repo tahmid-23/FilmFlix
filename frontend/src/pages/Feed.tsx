@@ -1,6 +1,7 @@
 import { Container } from 'react-bootstrap';
 import MainNav from '../components/MainNav';
 import FeedBox from '../components/FeedBox';
+import '../main.css';
 
 // Add typing for props when necessary
 export default function Feed({ props }: any) {
