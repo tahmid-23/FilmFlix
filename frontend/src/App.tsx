@@ -7,13 +7,21 @@ import MainNav from './components/MainNav';
 const App = () => {
 
   return (
-    <>
-    <Container>
-      <MainNav></MainNav>
-      <HomePage></HomePage>
-    </Container>
 
-    </>
+    <Container style={{width: "100vw", height:"53vw",  border: "5px solid green", backgroundColor: "black", margin: 0, 
+}} fluid>
+
+      <MainNav></MainNav>
+      <BrowserRouter>
+          <Routes>
+            <Route path="/">
+              <Route index element={<HomePage/>} />
+              <Route path="diet" element={<></>} />
+            </Route>
+          </Routes>
+
+        </BrowserRouter>
+    </Container>
   );
 };
 
