@@ -1,6 +1,7 @@
 import { Container, Row, Col, Button} from 'react-bootstrap';
 import '../main.css';
 import MainNav from '../components/MainNav';
+import FriendPopup from '../components/FriendPopup';
 
 import {AiOutlineUserAdd} from 'react-icons/ai'
 import ProfileCard from '../components/ProfileCard';

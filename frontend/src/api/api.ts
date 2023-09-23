@@ -17,3 +17,13 @@ export async function getProfile(id: number, token: string) {
 
   throw Error();
 }
+
+export async function getFeed(token: string) {
+  const response = await fetchApi(`/api/feed/`, token);
+
+  if (response.status === 200) {
+    return await response.json();
+  }
+
+  throw Error();
+}
