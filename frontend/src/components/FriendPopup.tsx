@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-export default function App() {
+export default function FriendPopup() {
   const [showModal, setShowModal] = useState(false);
 
   const handleClose = () => setShowModal(false);
