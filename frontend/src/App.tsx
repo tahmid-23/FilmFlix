@@ -1,8 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Container } from 'react-bootstrap';
 import HomePage from './pages/HomePage';
-import MainNav from './components/MainNav';
 import Auth0ProviderWithNavigate from './Auth0ProviderWithNavigate';
+import Feed from './pages/Feed';
 
 const App = () => {
   return (
@@ -12,7 +11,7 @@ const App = () => {
           <Routes>
             <Route path="/">
               <Route index element={<HomePage />} />
-              <Route path="diet" element={<></>} />
+              <Route path="feed" element={<Feed></Feed>} />
             </Route>
           </Routes>
         </Auth0ProviderWithNavigate>

@@ -1,7 +1,5 @@
 import {Navbar, Container, Nav, Row, Col} from 'react-bootstrap'
 
-import { useState } from 'react'
-
 // add specific typing with interface if necessary
 
 interface Page {
@@ -10,7 +8,8 @@ interface Page {
 
 const navTabs: any = {
     "HomePage": ["Sign-up", "Log-in"], 
-    "User": ["Home", "Friends", "Logout"]
+    "Feed": ["Home", "Friends", "Logout"] 
+    
 }
 
 export default function MainNav({page}: Page) {
