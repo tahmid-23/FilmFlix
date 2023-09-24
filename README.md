@@ -5,7 +5,8 @@ Social media website for movie lovers made in 24 hrs at HackUMBC.
 N/A
 
 ## Screenshots
-N/A
+![image](https://github.com/tahmid-23/FilmFlix/assets/109867418/e6a8f088-8142-4e66-a453-a39c822dde8a)
+![image](https://github.com/tahmid-23/FilmFlix/assets/109867418/eb817fe6-e496-46c1-aaef-83b0f5fb3d59)
 
 ## Built With
 - React, javascript, SQL, typescript, node.js, express
