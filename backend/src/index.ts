@@ -60,15 +60,26 @@ app.get('/api/user/:id', async (req: Request<{ id: number }>, res) => {
 
     const account = accounts[0];
 
-    const reviews = await connection.query(
-      'SELECT review_id, movie_title, rating, description, timestamp FROM review WHERE account_id = ?',
-      [req.params.id]
-    );
+    const reviews = (
+      await connection.query(
+        'SELECT review_id, movie_title, rating, description, timestamp FROM review WHERE account_id = ?',
+        [req.params.id]
+      )
+    ).map((review: any) => {
+      return { ...review, timestamp: review.timestamp.toString() };
+    });
 
-    const watchList = await connection.query(
-      'SELECT movie_title, timestamp FROM planned_movie WHERE account_id = ?',
-      [req.params.id]
-    );
+    const watchList = (
+      await connection.query(
+        'SELECT planned_movie_id, movie_title, timestamp FROM planned_movie WHERE account_id = ?',
+        [req.params.id]
+      )
+    ).map((movie: any) => {
+      return {
+        ...movie,
+        timestamp: movie.timestamp.toString()
+      };
+    });
 
     res.json({
       name: account.name,
@@ -130,7 +141,7 @@ app.get('/api/feed', async (req, res) => {
         [row.account_id]
       );
       const watchList = await connection.query(
-        'SELECT movie_title, timestamp FROM planned_movie WHERE account_id = ?',
+        'SELECT planned_movie_id, movie_title, timestamp FROM planned_movie WHERE account_id = ?',
         [row.account_id]
       );
       result.push({
