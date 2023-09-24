@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import {ClipLoader} from 'react-spinners';
+
 
 interface FriendPopupInput {
   setVisible: Function, 
   show: boolean
 }
 export default function FriendPopup({show, setVisible} : FriendPopupInput) {
+
+  let [showSearch, setShowSearch] = useState(true); 
 
   console.log(show); 
 
@@ -34,8 +38,12 @@ export default function FriendPopup({show, setVisible} : FriendPopupInput) {
           <Button variant="primary" onClick={()=>alert("Code this")}>
             Search
           </Button>
+          <ClipLoader color="#36d7b7" size={60}/>
         </Modal.Footer>
+
       </Modal>
+
+
     </div>
   );
 }

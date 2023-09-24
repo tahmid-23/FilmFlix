@@ -27,3 +27,4 @@ export async function getFeed(token: string) {
 
   throw Error();
 }
+
