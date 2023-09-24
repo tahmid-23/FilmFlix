@@ -4,6 +4,7 @@ import Auth0ProviderWithNavigate from './Auth0ProviderWithNavigate';
 import Feed from './pages/Feed';
 import Friends from './pages/Friends';
 import Profile from './pages/Profile';
+import Search from './pages/Search';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
               <Route path="feed" element={<Feed></Feed>} />
               <Route path="friends" element={<Friends></Friends>} />
               <Route path="profile/:id" element={<Profile />} />
+              <Route path="search" element={<Search />} />
             </Route>
           </Routes>
         </Auth0ProviderWithNavigate>
