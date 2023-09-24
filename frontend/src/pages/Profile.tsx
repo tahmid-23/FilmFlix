@@ -13,6 +13,7 @@ import {
   Stack
 } from 'react-bootstrap';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import MainNav from '../components/MainNav';
 
 const Profile = () => {
   const { getAccessTokenSilently, isAuthenticated } = useAuth0();
@@ -90,6 +91,7 @@ const Profile = () => {
 
   return (
     <Container style={{ padding: '1vh 1vw' }} fluid>
+      <MainNav page="Profile"></MainNav>
       <Row style={{ height: '40%' }}>
         <ProfileCard
           name={profileJson.name}
