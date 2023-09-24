@@ -8,7 +8,7 @@ interface Page {
 
 function BasicLink({ tab }: { tab: string }) {
   return (
-    <Nav.Link href={'./' + tab} style={{ paddingRight: 35 }}>
+    <Nav.Link href={'./' + tab} style={{ paddingRight: 20, paddingLeft: 20 }}>
       {tab}
     </Nav.Link>
   );
