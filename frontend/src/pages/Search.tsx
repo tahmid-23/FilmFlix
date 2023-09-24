@@ -1,5 +1,6 @@
 import { Container } from 'react-bootstrap';
 import MainNav from '../components/MainNav';
+import SearchBar from '../components/SearchBar';
 
 export default function Search() {
   return (
@@ -11,6 +12,7 @@ export default function Search() {
       }}
     >
       <MainNav page="Search" />
+      <SearchBar />
     </Container>
   );
 }
