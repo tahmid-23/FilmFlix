@@ -1,7 +1,6 @@
-import { Card, Stack, Button, Nav } from 'react-bootstrap';
-import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
+import { Card, Stack, Button } from 'react-bootstrap';
 import { MdDescription } from 'react-icons/md';
-import { Navigate, createSearchParams, useNavigate } from 'react-router-dom';
+import { createSearchParams, useNavigate } from 'react-router-dom';
 
 import { useState } from 'react';
 
