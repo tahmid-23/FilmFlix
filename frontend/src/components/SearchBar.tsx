@@ -1,6 +1,6 @@
 import { Container, Row, Col, Button} from "react-bootstrap";
 import { useState } from "react";
-
+import MovieInfo from "./MovieInfo";
 export default function SearchBar() {
 
   let [searchInput, setSearch] = useState(""); 
@@ -11,8 +11,8 @@ export default function SearchBar() {
 
     console.log(descript); 
 
-    
-    return <p color="white" key={descript.id}> {descript.original_title}</p>
+
+    return <MovieInfo title={descript.title} date={descript.release_date} description={descript.overview}></MovieInfo>
 
 
   }); 
@@ -39,12 +39,13 @@ export default function SearchBar() {
           <Col>
 
           {movieText}
-
-
           
           </Col>
         </Row>
+
       </Container>
+
+
       
 
     
