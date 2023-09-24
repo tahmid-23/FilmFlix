@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { AiOutlineUserAdd } from 'react-icons/ai';
 
 export default function Friends({ props }: any) {
+  
   const [show, setShowPopup] = useState(false);
 
   return (

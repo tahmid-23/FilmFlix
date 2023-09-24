@@ -39,6 +39,17 @@ export async function getFeed(token: string) {
   throw Error();
 }
 
+export async function getFriends(token: string) {
+  const response = await getApi(`/api/friends/`, token);
+
+  if (response.status === 200) {
+    return await response.json();
+  }
+
+  throw Error();
+}
+
+
 export async function addFriend(username: string, token: string) {
   const response = await postApi('/api/add-friend', token, {
     username: username
@@ -50,3 +61,4 @@ export async function addFriend(username: string, token: string) {
 
   throw Error();
 }
+
