@@ -3,14 +3,12 @@ import MainNav from '../components/MainNav';
 import { FormEvent, useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { addWatchList } from '../api/api';
+import { useSearchParams } from 'react-router-dom';
 
-interface ReviewProps {
-  title?: string;
-}
-
-const WatchList = ({ title }: ReviewProps) => {
+const WatchList = () => {
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [accessToken, setAccessToken] = useState<string>();
+  const [params] = useSearchParams();
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -40,7 +38,6 @@ const WatchList = ({ title }: ReviewProps) => {
           const title = formData.get('title')!.toString();
           const watchAt = formData.get('watchAt')!.toString();
 
-          console.log(watchAt);
           addWatchList(title, Date.parse(watchAt) / 1000, accessToken);
         }}
       >
@@ -62,7 +59,7 @@ const WatchList = ({ title }: ReviewProps) => {
                 name="title"
                 type="text"
                 placeholder="Enter movie title"
-                defaultValue={title}
+                defaultValue={params.get('title') || undefined}
               />
             </Col>
           </div>

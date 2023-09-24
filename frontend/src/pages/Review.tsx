@@ -3,14 +3,12 @@ import MainNav from '../components/MainNav';
 import { FormEvent, useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { addReview } from '../api/api';
+import { useSearchParams } from 'react-router-dom';
 
-interface ReviewProps {
-  title?: string;
-}
-
-const Review = ({ title }: ReviewProps) => {
+const Review = () => {
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [accessToken, setAccessToken] = useState<string>();
+  const [params] = useSearchParams();
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -62,7 +60,7 @@ const Review = ({ title }: ReviewProps) => {
                 name="title"
                 type="text"
                 placeholder="Enter movie title"
-                defaultValue={title}
+                defaultValue={params.get('title') || undefined}
               />
             </Col>
           </div>
