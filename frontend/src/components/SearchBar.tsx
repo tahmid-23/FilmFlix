@@ -50,7 +50,7 @@ export default function SearchBar() {
               }}
               type="search"
               className="form-control rounded"
-              placeholder="Search"
+              placeholder="Search for movies..."
               aria-label="Search"
               aria-describedby="search-addon"
             />
