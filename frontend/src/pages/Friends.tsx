@@ -60,7 +60,7 @@ export default function Friends() {
       <MainNav page="Friends" />
       <div style={{ display: 'flex', marginTop: '2vh', marginLeft: '1vw' }}>
         <h1 style={{ fontSize: '25 rem', color: 'white', paddingRight: '1vw' }}>
-          <b>Friends</b>
+          <b>Friends {`(${listOfFriends.length})`}</b>
         </h1>
         <Button onClick={() => setShowPopup(true)}>
           <AiOutlineUserAdd size={35} />
