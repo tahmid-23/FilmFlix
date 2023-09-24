@@ -23,7 +23,7 @@ export default function FriendPopup({
     if (isAuthenticated) {
       getAccessTokenSilently().then(setAccessToken);
     }
-  }, [isAuthenticated, getAccessTokenSilently]);
+  }, [isAuthenticated, getAccessTokenSilently, setAccessToken]);
 
   if (!accessToken) {
     return <>Loading...</>;

@@ -19,7 +19,7 @@ const WatchList = () => {
         setAccessToken(token);
       });
     }
-  }, [isAuthenticated, getAccessTokenSilently, setAccessToken, setOwnId]);
+  }, [getAccessTokenSilently, isAuthenticated]);
 
   if (!accessToken || !ownId) {
     return <>Loading...</>;

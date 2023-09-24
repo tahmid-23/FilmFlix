@@ -15,8 +15,7 @@ export default function MovieInfo({
   date,
   description
 }: MovieInfoProps) {
-  let [showDescript, setShowDescript] = useState(false);
-
+  const [showDescript, setShowDescript] = useState(false);
   const navigate = useNavigate();
 
   return (
@@ -64,7 +63,7 @@ export default function MovieInfo({
                 setShowDescript(!showDescript);
               }}
             >
-              <MdDescription></MdDescription>
+              <MdDescription />
             </Button>
           </div>
         </Card>

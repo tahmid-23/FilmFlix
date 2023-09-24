@@ -6,8 +6,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useEffect, useState } from 'react';
 import { getFeed } from '../api/api';
 
-// Add typing for props when necessary
-export default function Feed({ props }: any) {
+export default function Feed() {
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [feed, setFeed] = useState<any>();
 
@@ -43,7 +42,7 @@ export default function Feed({ props }: any) {
           minHeight: '100vh'
         }}
       >
-        <MainNav page="Feed"></MainNav>
+        <MainNav page="Feed" />
         <Container>
           <h1 style={{ marginTop: '10px', color: 'white' }}>
             <b>Friend Feed</b>
@@ -51,6 +50,11 @@ export default function Feed({ props }: any) {
           {entries.map((entry) => {
             return (
               <FeedBox
+                key={`${entry.feed_type}${
+                  entry.feed_type === 'WATCH_LIST'
+                    ? entry.planned_movie_id
+                    : entry.review_id
+                }`}
                 title={entry.name}
                 subtitle={<b>{entry.movie_title}</b>}
                 info={`${

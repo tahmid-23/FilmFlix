@@ -31,7 +31,7 @@ export default function Friends() {
     return <p>Loading...</p>;
   }
 
-  let friendCards = listOfFriends.map((friend: any) => {
+  const friendCards = listOfFriends.map((friend: any) => {
     return (
       <ProfileCard
         key={friend.account_id}
@@ -45,7 +45,7 @@ export default function Friends() {
         }
         email={friend.email}
         bio={friend.bio}
-      ></ProfileCard>
+      />
     );
   });
 

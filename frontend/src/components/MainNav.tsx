@@ -1,8 +1,7 @@
-import { Navbar, Container, Nav, Row, Col } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom';
 import { getOwnId } from '../api/api';
-// add specific typing with interface if necessary
 
 interface Page {
   page: string;
@@ -33,12 +32,14 @@ export default function MainNav({ page }: Page) {
   if (page === 'LandingPage') {
     navLinks = [
       <Nav.Link
+        key="Sign Up"
         style={{ paddingRight: 15, paddingLeft: 15 }}
         onClick={() => loginWithRedirect()}
       >
         Sign Up
       </Nav.Link>,
       <Nav.Link
+        key="Log In"
         style={{ paddingRight: 15, paddingLeft: 15 }}
         onClick={() => loginWithRedirect()}
       >
@@ -50,6 +51,7 @@ export default function MainNav({ page }: Page) {
       if (tab === 'Logout') {
         return (
           <Nav.Link
+            key="Logout"
             style={{ paddingRight: 15, paddingLeft: 15 }}
             onClick={() => logout()}
           >
@@ -59,6 +61,7 @@ export default function MainNav({ page }: Page) {
       } else if (tab === 'Profile') {
         return (
           <Nav.Link
+            key="Profile"
             style={{ paddingRight: 20, paddingLeft: 20 }}
             onClick={() => {
               if (isAuthenticated) {
@@ -74,7 +77,7 @@ export default function MainNav({ page }: Page) {
           </Nav.Link>
         );
       }
-      return <BasicLink tab={tab} />;
+      return <BasicLink key={tab} tab={tab} />;
     });
 
     // Feed
@@ -99,7 +102,7 @@ export default function MainNav({ page }: Page) {
           {' '}
           FilmFlix
         </Navbar.Brand>
-        <div style={{ width: '70%' }}></div>
+        <div style={{ width: '70%' }} />
         <Nav
           variant="tabs"
           className="me-auto"

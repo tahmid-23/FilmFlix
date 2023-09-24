@@ -37,7 +37,7 @@ const Profile = () => {
     reviews = (
       <ListGroup>
         {profileJson.reviews.map((review: any) => {
-          let stars: ReactNode[] = [];
+          const stars: ReactNode[] = [];
           for (let i = 0; i < review.rating; ++i) {
             stars.push(<AiFillStar key={i} />);
           }
@@ -106,7 +106,7 @@ const Profile = () => {
       style={{ paddingLeft: 0, paddingRight: 0, overflow: 'hidden' }}
       fluid
     >
-      <MainNav page="Profile"></MainNav>
+      <MainNav page="Profile" />
       <Container style={{ marginLeft: 0 }}>
         <ProfileCard
           name={profileJson.name}

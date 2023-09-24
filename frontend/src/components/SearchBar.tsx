@@ -1,20 +1,18 @@
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useState } from 'react';
 import MovieInfo from './MovieInfo';
+
 export default function SearchBar() {
-  let [searchInput, setSearch] = useState('');
-
-  let [movieList, setMovieList] = useState([]);
-
-  let movieText = movieList.map((descript: any) => {
-    console.log(descript);
-
+  const [searchInput, setSearch] = useState('');
+  const [movieList, setMovieList] = useState([]);
+  const movieText = movieList.map((descript: any) => {
     return (
       <MovieInfo
+        key={descript.id}
         title={descript.title}
         date={descript.release_date}
         description={descript.overview}
-      ></MovieInfo>
+      />
     );
   });
 

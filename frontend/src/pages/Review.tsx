@@ -51,7 +51,7 @@ const Review = () => {
       >
         <Container style={{ paddingTop: '8px' }}>
           <Row>
-            <Col className="col-2"></Col>
+            <Col className="col-2" />
             <Col className="col-10">
               <h1 style={{ textAlign: 'center', color: 'white' }}>
                 Movie Review
