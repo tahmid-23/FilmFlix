@@ -1,12 +1,17 @@
 import { Container } from 'react-bootstrap';
 import MainNav from '../components/MainNav';
-import '../main.css';
 
 // Add typing for props when necessary
 export default function LandingPage({ props }: any) {
   return (
     <>
-      <Container fluid>
+      <Container
+        fluid
+        style={{
+          paddingLeft: '0',
+          paddingRight: '0'
+        }}
+      >
         <MainNav page="LandingPage"></MainNav>
       </Container>
     </>
