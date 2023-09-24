@@ -19,6 +19,16 @@ function postApi(route: string, token: string, body: any) {
   });
 }
 
+export async function getOwnId(token: string) {
+  const response = await getApi('/api/id', token);
+
+  if (response.status === 200) {
+    return await response.json();
+  }
+
+  throw Error();
+}
+
 export async function getProfile(id: number, token: string) {
   const response = await getApi(`/api/user/${id}`, token);
 
