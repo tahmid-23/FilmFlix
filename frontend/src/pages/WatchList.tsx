@@ -1,11 +1,14 @@
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import MainNav from '../components/MainNav';
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, ReactNode, useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { addWatchList, getOwnId } from '../api/api';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import Loading from '../components/Loading';
+import { useRedirectUnauthenticated } from '../hooks/useRedirectUnauthenticated';
 
 const WatchList = () => {
+  useRedirectUnauthenticated();
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [accessToken, setAccessToken] = useState<string>();
   const [ownId, setOwnId] = useState();
@@ -21,20 +24,11 @@ const WatchList = () => {
     }
   }, [getAccessTokenSilently, isAuthenticated]);
 
+  let content: ReactNode;
   if (!accessToken || !ownId) {
-    return <>Loading...</>;
-  }
-
-  return (
-    <Container
-      fluid
-      style={{
-        paddingLeft: '0',
-        paddingRight: '0',
-        paddingBottom: '15'
-      }}
-    >
-      <MainNav page="Review" />
+    content = <Loading />;
+  } else {
+    content = (
       <Form
         onSubmit={(e: FormEvent<HTMLFormElement>) => {
           e.preventDefault();
@@ -52,7 +46,7 @@ const WatchList = () => {
       >
         <Container style={{ paddingTop: '8px' }}>
           <Row>
-            <Col className="col-2"></Col>
+            <Col className="col-2" />
             <Col className="col-10">
               <h1 style={{ textAlign: 'center', color: 'white' }}>
                 Add to Watchlist
@@ -87,6 +81,20 @@ const WatchList = () => {
           </Row>
         </Container>
       </Form>
+    );
+  }
+
+  return (
+    <Container
+      fluid
+      style={{
+        paddingLeft: '0',
+        paddingRight: '0',
+        paddingBottom: '15'
+      }}
+    >
+      <MainNav page="Review" />
+      {content}
     </Container>
   );
 };

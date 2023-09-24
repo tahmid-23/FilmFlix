@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useAuth0 } from '@auth0/auth0-react';
 import { addFriend } from '../api/api';
+import Loading from './Loading';
 
 interface FriendPopupInput {
   setVisible: (visible: boolean) => void;
@@ -26,7 +27,7 @@ export default function FriendPopup({
   }, [isAuthenticated, getAccessTokenSilently, setAccessToken]);
 
   if (!accessToken) {
-    return <>Loading...</>;
+    return <Loading />;
   }
 
   return (
