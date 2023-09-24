@@ -31,7 +31,7 @@ const Review = ({ title }: ReviewProps) => {
         paddingBottom: '15'
       }}
     >
-      <MainNav page="LandingPage" />
+      <MainNav page="Review" />
       <Form
         onSubmit={(e: FormEvent<HTMLFormElement>) => {
           e.preventDefault();
