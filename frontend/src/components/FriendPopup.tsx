@@ -45,9 +45,12 @@ export default function FriendPopup({ show, setVisible }: FriendPopupInput) {
               e.preventDefault();
 
               const formData = new FormData(e.currentTarget);
+
               const username = formData.get('username')!.toString();
 
-              addFriend(username, accessToken);
+              if(accessToken) {
+                addFriend(username, accessToken);
+              }
             }}
           >
             <Modal.Header closeButton>

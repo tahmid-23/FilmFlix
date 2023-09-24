@@ -39,7 +39,6 @@ export default function MainNav({ page }: Page) {
       </Nav.Link>
     ];
   } else {
-    console.log('page');
 
     navLinks = navTabs[page].map((tab: string) => {
       return <BasicLink tab={tab} />;
