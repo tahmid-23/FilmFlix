@@ -107,7 +107,8 @@ export default function MainNav({ page }: Page) {
             fontFamily: 'Ubuntu',
             lineHeight: '133.023%',
             fontWeight: 400,
-            fontStyle: 'normal'
+            fontStyle: 'normal',
+            border: 0
           }}
         >
           {navLinks}
