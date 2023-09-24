@@ -15,8 +15,9 @@ function BasicLink({ tab }: { tab: string }) {
 }
 
 const navTabs: Record<string, string[]> = {
-  Friends: ['Search', 'Feed', 'Friends', 'Logout'],
-  Feed: ['Search', 'Friends', 'Logout']
+  Friends: ['Search', 'Feed', 'Logout'],
+  Feed: ['Search', 'Friends', 'Logout'],
+  Search: ['Feed', 'Friends', 'Logout']
 };
 
 export default function MainNav({ page }: Page) {
