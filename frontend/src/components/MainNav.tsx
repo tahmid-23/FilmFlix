@@ -17,7 +17,7 @@ function BasicLink({ tab }: { tab: string }) {
 }
 
 const navTabs: Record<string, string[]> = {
-  Friends: ["Profile", 'Search', 'Feed', 'Friends', 'Logout'],
+  Friends: ["Profile", 'Search', 'Feed', 'Logout'],
   Feed: ["Profile", 'Search', 'Friends', 'Logout']
 };
 
@@ -30,30 +30,31 @@ export default function MainNav({ page }: Page) {
   if (page === 'LandingPage') {
     navLinks = [
       <Nav.Link
-        style={{ paddingRight: 35 }}
+        style={{ paddingRight: 15, paddingLeft: 15 }}
         onClick={() => loginWithRedirect()}
       >
         Sign Up
       </Nav.Link>,
       <Nav.Link
-        style={{ paddingRight: 35 }}
+        style={{ paddingRight: 15, paddingLeft: 15}}
         onClick={() => loginWithRedirect()}
       >
         Log In
       </Nav.Link>
     ];
   } else {
-    
     navLinks = navTabs[page].map((tab: string) => {
+
+      console.log(tab); 
       if(tab === 'Logout') {
-        return (<Nav.Link style={{ paddingRight: 35 }} onClick={() => logout()}>
+        return (<Nav.Link style={{ paddingRight: 15, paddingLeft: 15 }} onClick={() => logout()}>
         Logout
         </Nav.Link>); 
       }
       else if(tab === 'Profile') {
         return (
           <Nav.Link
-            style={{ paddingRight: 35 }}
+            style={{ paddingRight: 15, paddingLeft:15 }}
             onClick={() => {
               if (isAuthenticated) {
                 getAccessTokenSilently()
@@ -72,26 +73,6 @@ export default function MainNav({ page }: Page) {
     });
 
     // Feed
-    navLinks = [
-      <Nav.Link
-        style={{ paddingRight: 35 }}
-        onClick={() => {
-          if (isAuthenticated) {
-            getAccessTokenSilently()
-              .then(getOwnId)
-              .then((id) => {
-                navigate(`/profile/${id}`);
-              });
-          }
-        }}
-      >
-        Profile
-      </Nav.Link>,
-      <BasicLink tab="Friends" />,
-      <Nav.Link style={{ paddingRight: 35 }} onClick={() => logout()}>
-        Logout
-      </Nav.Link>
-    ];
   }
 
   return (
