@@ -55,7 +55,10 @@ const Profile = () => {
                   <h6 style={{ margin: 0 }}>
                     <i>
                       Reviewed on{' '}
-                      {new Date(1000 * review.timestamp).toDateString()}
+                      {new Date(1000 * review.timestamp).toLocaleDateString(
+                        'en-US',
+                        { timeZone: 'UTC' }
+                      )}
                     </i>
                   </h6>
                 </div>
@@ -75,9 +78,18 @@ const Profile = () => {
     watchList = (
       <ListGroup>
         {profileJson.watchList.map((movie: any) => {
+          console.log(movie);
           return (
             <ListGroupItem key={movie.planned_movie_id}>
               <h5 style={{ margin: 0 }}>{movie.movie_title}</h5>
+              <h6 style={{ margin: 0 }}>
+                <i>
+                  Planning to watch on{' '}
+                  {new Date(1000 * movie.watch_at).toLocaleDateString('en-US', {
+                    timeZone: 'UTC'
+                  })}
+                </i>
+              </h6>
             </ListGroupItem>
           );
         })}

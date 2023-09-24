@@ -92,12 +92,12 @@ export async function addReview(
 
 export async function addWatchList(
   title: string,
-  watchAt: Date,
+  watchAt: number,
   token: string
 ) {
   const response = await postApi('/api/add-watch-list', token, {
     movieTitle: title,
-    watchAt: watchAt.getTime() / 1000
+    watchAt: watchAt
   });
 
   if (response.status === 200) {

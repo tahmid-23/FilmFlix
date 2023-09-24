@@ -6,6 +6,7 @@ import Friends from './pages/Friends';
 import Profile from './pages/Profile';
 import Search from './pages/Search';
 import Review from './pages/Review';
+import WatchList from './pages/WatchList';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
               <Route path="profile/:id" element={<Profile />} />
               <Route path="search" element={<Search />} />
               <Route path="review" element={<Review />} />
+              <Route path="watch-list" element={<WatchList />} />
             </Route>
           </Routes>
         </Auth0ProviderWithNavigate>
