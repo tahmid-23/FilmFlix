@@ -10,7 +10,7 @@ interface ProfileCardProps {
 
 const ProfileCard = ({ name, email, bio }: ProfileCardProps) => {
   return (
-    <Stack direction="horizontal" style={{ padding: '2vh 2vw' }}>
+    <Stack direction="horizontal" style={{ padding: '3vh 2vw' }}>
       <div className="icon-container">
         <BsPersonCircle
           style={{ color: 'white', width: '100px', height: '100px' }}
