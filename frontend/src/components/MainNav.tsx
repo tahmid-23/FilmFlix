@@ -1,5 +1,7 @@
 import { Navbar, Container, Nav, Row, Col } from 'react-bootstrap';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useNavigate } from 'react-router-dom';
+import { getOwnId } from '../api/api';
 // add specific typing with interface if necessary
 
 interface Page {
@@ -20,7 +22,9 @@ const navTabs: Record<string, string[]> = {
 };
 
 export default function MainNav({ page }: Page) {
-  const { loginWithRedirect, logout } = useAuth0();
+  const { loginWithRedirect, logout, isAuthenticated, getAccessTokenSilently } =
+    useAuth0();
+  const navigate = useNavigate();
 
   let navLinks: any[];
   if (page === 'LandingPage') {
@@ -40,6 +44,20 @@ export default function MainNav({ page }: Page) {
     ];
   } else if (page === 'Friends') {
     navLinks = [
+      <Nav.Link
+        style={{ paddingRight: 35 }}
+        onClick={() => {
+          if (isAuthenticated) {
+            getAccessTokenSilently()
+              .then(getOwnId)
+              .then((id) => {
+                navigate(`/profile/${id}`);
+              });
+          }
+        }}
+      >
+        Profile
+      </Nav.Link>,
       <BasicLink tab="Feed" />,
       <BasicLink tab="Friends" />,
       <Nav.Link style={{ paddingRight: 35 }} onClick={() => logout()}>
@@ -49,6 +67,20 @@ export default function MainNav({ page }: Page) {
   } else {
     // Feed
     navLinks = [
+      <Nav.Link
+        style={{ paddingRight: 35 }}
+        onClick={() => {
+          if (isAuthenticated) {
+            getAccessTokenSilently()
+              .then(getOwnId)
+              .then((id) => {
+                navigate(`/profile/${id}`);
+              });
+          }
+        }}
+      >
+        Profile
+      </Nav.Link>,
       <BasicLink tab="Friends" />,
       <Nav.Link style={{ paddingRight: 35 }} onClick={() => logout()}>
         Logout
