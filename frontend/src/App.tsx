@@ -5,6 +5,7 @@ import Feed from './pages/Feed';
 import Friends from './pages/Friends';
 import Profile from './pages/Profile';
 import Search from './pages/Search';
+import Review from './pages/Review';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
               <Route path="friends" element={<Friends></Friends>} />
               <Route path="profile/:id" element={<Profile />} />
               <Route path="search" element={<Search />} />
+              <Route path="review" element={<Review />} />
             </Route>
           </Routes>
         </Auth0ProviderWithNavigate>

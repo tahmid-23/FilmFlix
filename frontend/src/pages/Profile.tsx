@@ -90,29 +90,43 @@ const Profile = () => {
   }
 
   return (
-    <Container style={{ paddingLeft: 0, paddingRight: 0 }} fluid>
+    <Container
+      style={{ paddingLeft: 0, paddingRight: 0, overflow: 'hidden' }}
+      fluid
+    >
       <MainNav page="Profile"></MainNav>
-      <Row style={{ height: '40%', width: '100%' }}>
+      <Container style={{ marginLeft: 0 }}>
         <ProfileCard
           name={profileJson.name}
           email={profileJson.email}
           bio={profileJson.bio}
         />
-      </Row>
-      <Row style={{ height: '60%' }}>
-        <Col>
-          <Card style={{ height: '100%' }}>
-            <Card.Header>Reviews</Card.Header>
-            <Card.Body>{reviews}</Card.Body>
-          </Card>
-        </Col>
-        <Col>
-          <Card style={{ height: '100%' }}>
-            <Card.Header>Watching Soon</Card.Header>
-            <Card.Body>{watchList}</Card.Body>
-          </Card>
-        </Col>
-      </Row>
+      </Container>
+      <Container fluid>
+        <Row style={{ height: '60%', width: '100vw' }}>
+          {' '}
+          <Col>
+            <Card style={{ height: '100%' }}>
+              <Card.Header>
+                <h4>
+                  <b>Reviews</b>
+                </h4>
+              </Card.Header>
+              <Card.Body>{reviews}</Card.Body>
+            </Card>
+          </Col>
+          <Col>
+            <Card style={{ height: '100%' }}>
+              <Card.Header>
+                <h4>
+                  <b>Watching Soon</b>
+                </h4>
+              </Card.Header>
+              <Card.Body>{watchList}</Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
     </Container>
   );
 };

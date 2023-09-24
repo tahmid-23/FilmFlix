@@ -70,3 +70,22 @@ export async function addFriend(email: string, token: string) {
 
   throw Error();
 }
+
+export async function addReview(
+  title: string,
+  rating: number,
+  description: string,
+  token: string
+) {
+  const response = await postApi('/api/add-review', token, {
+    movieTitle: title,
+    rating: rating,
+    description: description
+  });
+
+  if (response.status === 200) {
+    return;
+  }
+
+  throw Error();
+}
