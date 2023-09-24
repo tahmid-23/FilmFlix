@@ -3,25 +3,29 @@ import '../main.css';
 
 import MainNav from '../components/MainNav';
 import FriendPopup from '../components/FriendPopup';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { AiOutlineUserAdd } from 'react-icons/ai';
 import { getFriends } from '../api/api';
 import { useAuth0 } from '@auth0/auth0-react';
 import ProfileCard from '../components/ProfileCard';
 import { Link } from 'react-router-dom';
 
-export default function Friends({ props }: any) {
+export default function Friends() {
   const [show, setShowPopup] = useState(false);
 
   const [listOfFriends, setFriends] = useState([]);
 
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();
 
-  useEffect(() => {
+  const refreshFriends = useCallback(() => {
     if (isAuthenticated) {
       getAccessTokenSilently().then(getFriends).then(setFriends);
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, getAccessTokenSilently, setFriends]);
+
+  useEffect(() => {
+    refreshFriends();
+  }, [refreshFriends]);
 
   if (!listOfFriends) {
     return <p>Loading...</p>;
@@ -61,7 +65,11 @@ export default function Friends({ props }: any) {
         <Button onClick={() => setShowPopup(true)}>
           <AiOutlineUserAdd size={40} />
         </Button>
-        <FriendPopup show={show} setVisible={setShowPopup} />
+        <FriendPopup
+          show={show}
+          setVisible={setShowPopup}
+          onAddFriend={refreshFriends}
+        />
       </div>
 
       {friendCards}

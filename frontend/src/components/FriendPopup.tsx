@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -7,13 +7,17 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { addFriend } from '../api/api';
 
 interface FriendPopupInput {
-  setVisible: Function;
+  setVisible: (visible: boolean) => void;
+  onAddFriend: () => void;
   show: boolean;
 }
-export default function FriendPopup({ show, setVisible }: FriendPopupInput) {
+export default function FriendPopup({
+  show,
+  setVisible,
+  onAddFriend
+}: FriendPopupInput) {
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [accessToken, setAccessToken] = useState<string>();
-
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -43,7 +47,10 @@ export default function FriendPopup({ show, setVisible }: FriendPopupInput) {
 
               const username = formData.get('email')!.toString();
 
-              addFriend(username, accessToken).then(setVisible(false));
+              addFriend(username, accessToken).then(() => {
+                setVisible(false);
+                onAddFriend();
+              });
             }}
           >
             <Modal.Header closeButton>

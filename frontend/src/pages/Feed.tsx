@@ -46,7 +46,6 @@ export default function Feed({ props }: any) {
             <b>Friend Feed</b>
           </h1>
           {entries.map((entry) => {
-            console.log(entry);
             return (
               <FeedBox
                 title={entry.name}

@@ -8,10 +8,6 @@ const app = express();
 
 app.use(cors());
 
-app.get('/', (_req, res) => {
-  res.send('Hello, World!');
-});
-
 const pool = createPool({
   host: 'localhost',
   user: 'hackumbc',
@@ -247,7 +243,7 @@ app.post('/api/add-friend', async (req: RequestWithBody<FriendBody>, res) => {
       [senderId, targetId, targetId, senderId]
     );
 
-    res.status(200);
+    res.sendStatus(200);
   } catch (e) {
     console.error(e);
     res.sendStatus(500);

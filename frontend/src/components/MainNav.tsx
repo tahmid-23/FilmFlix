@@ -46,7 +46,6 @@ export default function MainNav({ page }: Page) {
     ];
   } else {
     navLinks = navTabs[page].map((tab: string) => {
-      console.log(tab);
       if (tab === 'Logout') {
         return (
           <Nav.Link
