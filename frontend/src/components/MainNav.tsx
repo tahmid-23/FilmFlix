@@ -58,7 +58,7 @@ export default function MainNav({ page }: Page) {
       } else if (tab === 'Profile') {
         return (
           <Nav.Link
-            style={{ paddingRight: 15, paddingLeft: 15 }}
+            style={{ paddingRight: 20, paddingLeft: 20 }}
             onClick={() => {
               if (isAuthenticated) {
                 getAccessTokenSilently()
