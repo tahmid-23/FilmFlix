@@ -38,7 +38,9 @@ export default function Feed({ props }: any) {
         fluid
         style={{
           paddingLeft: '0',
-          paddingRight: '0'
+          paddingRight: '0',
+          height: '100%',
+          minHeight: '100vh'
         }}
       >
         <MainNav page="Feed"></MainNav>
