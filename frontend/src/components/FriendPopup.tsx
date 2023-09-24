@@ -44,7 +44,7 @@ export default function FriendPopup({ show, setVisible }: FriendPopupInput) {
 
               const username = formData.get('username')!.toString();
 
-              addFriend(username, accessToken);
+              addFriend(username, accessToken).then(setVisible(false));
             }}
           >
             <Modal.Header closeButton>
