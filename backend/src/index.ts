@@ -137,14 +137,26 @@ app.get('/api/feed', async (req, res) => {
 
     const result = [];
     for (const row of rows) {
-      const reviews = await connection.query(
-        'SELECT review_id, movie_title, rating, description, timestamp FROM review WHERE account_id = ?',
-        [row.account_id]
-      );
-      const watchList = await connection.query(
-        'SELECT planned_movie_id, movie_title, timestamp FROM planned_movie WHERE account_id = ?',
-        [row.account_id]
-      );
+      const reviews = (
+        await connection.query(
+          'SELECT review_id, movie_title, rating, description, timestamp FROM review WHERE account_id = ?',
+          [row.account_id]
+        )
+      ).map((review: any) => {
+        return { ...review, timestamp: review.timestamp.toString() };
+      });
+      const watchList = (
+        await connection.query(
+          'SELECT planned_movie_id, movie_title, watch_at, timestamp FROM planned_movie WHERE account_id = ?',
+          [row.account_id]
+        )
+      ).map((movie: any) => {
+        return {
+          ...movie,
+          watch_at: movie.watch_at.toString(),
+          timestamp: movie.timestamp.toString()
+        };
+      });
       result.push({
         name: row.name,
         reviews: reviews,
