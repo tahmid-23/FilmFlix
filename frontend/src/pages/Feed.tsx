@@ -14,7 +14,7 @@ export default function Feed() {
     if (isAuthenticated) {
       getAccessTokenSilently().then(getFeed).then(setFeed);
     }
-  }, [isAuthenticated]);
+  }, [getAccessTokenSilently, isAuthenticated]);
 
   if (!feed) {
     return <>Loading...</>;
