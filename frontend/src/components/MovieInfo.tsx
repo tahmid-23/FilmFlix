@@ -37,7 +37,14 @@ export default function MovieInfo({ title, date, description}: MovieInfoProps) {
             }}>
                 Review
             </Button>
-            <Button>
+            <Button onClick={() => {
+                navigate({
+                    pathname: "/Watch-List", 
+                    search: createSearchParams({
+                        title: title
+                    }).toString()
+                })
+            }}>
                 Watching
             </Button>
 
