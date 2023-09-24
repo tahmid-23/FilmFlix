@@ -30,6 +30,7 @@ export default function Feed({ props }: any) {
       entries.push({ name: friend.name, feed_type: 'WATCH_LIST', ...movie });
     }
   }
+  entries.sort((entryA, entryB) => entryB.timestamp - entryA.timestamp);
 
   return (
     <>
@@ -54,7 +55,10 @@ export default function Feed({ props }: any) {
                   entry.feed_type === 'WATCH_LIST'
                     ? 'Watching soon'
                     : 'Left a review'
-                } · ${new Date(1000 * entry.timestamp).toTimeString()}`}
+                } · ${new Date(1000 * entry.timestamp).toLocaleDateString(
+                  'en-US',
+                  { timeZone: 'UTC' }
+                )}`}
               />
             );
           })}
