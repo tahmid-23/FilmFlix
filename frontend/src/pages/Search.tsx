@@ -8,7 +8,9 @@ export default function Search() {
       fluid
       style={{
         paddingLeft: '0',
-        paddingRight: '0'
+        paddingRight: '0',
+        minHeight: '100vh',
+        height: '100%'
       }}
     >
       <MainNav page="Search" />
