@@ -21,7 +21,6 @@ export default function Feed({ props }: any) {
     return <>Loading...</>;
   }
 
-  console.log(feed);
   const entries = [];
   for (const friend of feed) {
     for (const review of friend.reviews) {

@@ -14,7 +14,7 @@ export default function FriendPopup({ show, setVisible }: FriendPopupInput) {
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [accessToken, setAccessToken] = useState<string>();
 
-  console.log(show); 
+  console.log(show);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -22,13 +22,9 @@ export default function FriendPopup({ show, setVisible }: FriendPopupInput) {
     }
   }, [isAuthenticated, getAccessTokenSilently]);
 
-  /*
   if (!accessToken) {
     return <>Loading...</>;
   }
-
-  */
-
 
   return (
     <div className="text-center">
@@ -47,10 +43,8 @@ export default function FriendPopup({ show, setVisible }: FriendPopupInput) {
               const formData = new FormData(e.currentTarget);
 
               const username = formData.get('username')!.toString();
-              
-              if(accessToken) {
-                addFriend(username, accessToken);
-              }
+
+              addFriend(username, accessToken);
             }}
           >
             <Modal.Header closeButton>
@@ -75,8 +69,6 @@ export default function FriendPopup({ show, setVisible }: FriendPopupInput) {
           </Form>
         </Form.Group>
       </Modal>
-
-
     </div>
   );
 }
