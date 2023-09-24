@@ -1,16 +1,31 @@
-export default function SearchBar() {
+import { Container, Row, Col, Button} from "react-bootstrap";
 
-  testApi(); 
+export default function SearchBar() {
   
   return (
     <div className="input-group rounded">
-      <input
-        type="search"
-        className="form-control rounded"
-        placeholder="Search"
-        aria-label="Search"
-        aria-describedby="search-addon"
-      />
+
+      <Container className="justify-content-center">
+        <Row>
+          <Col xs lg = {8}>
+          <input onSubmit={(e)=> console.log(e)}
+          type="search"
+          className="form-control rounded"
+          placeholder="Search"
+          aria-label="Search"
+          aria-describedby="search-addon"
+        />
+          </Col>
+          <Col xs lg = {4}>
+            <Button>Submit</Button>
+          </Col>
+        </Row>
+       
+
+        
+
+      </Container>
+      
 
     
     </div>
