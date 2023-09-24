@@ -94,7 +94,7 @@ app.get('/api/user/:id', async (req: Request<{ id: number }>, res) => {
 
     const reviews = (
       await connection.query(
-        'SELECT review_id, movie_title, rating, description, timestamp FROM review WHERE account_id = ?',
+        'SELECT review_id, movie_title, rating, description, timestamp FROM review WHERE account_id = ? ORDER BY timestamp DESC',
         [req.params.id]
       )
     ).map((review: any) => {
@@ -103,7 +103,7 @@ app.get('/api/user/:id', async (req: Request<{ id: number }>, res) => {
 
     const watchList = (
       await connection.query(
-        'SELECT planned_movie_id, movie_title, watch_at, timestamp FROM planned_movie WHERE account_id = ?',
+        'SELECT planned_movie_id, movie_title, watch_at, timestamp FROM planned_movie WHERE account_id = ? ORDER BY timestamp DESC',
         [req.params.id]
       )
     ).map((movie: any) => {

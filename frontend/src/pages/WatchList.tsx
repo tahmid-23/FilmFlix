@@ -2,21 +2,26 @@ import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import MainNav from '../components/MainNav';
 import { FormEvent, useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import { addWatchList } from '../api/api';
-import { useSearchParams } from 'react-router-dom';
+import { addWatchList, getOwnId } from '../api/api';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const WatchList = () => {
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [accessToken, setAccessToken] = useState<string>();
+  const [ownId, setOwnId] = useState();
   const [params] = useSearchParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isAuthenticated) {
-      getAccessTokenSilently().then(setAccessToken);
+      getAccessTokenSilently().then((token) => {
+        getOwnId(token).then(setOwnId);
+        setAccessToken(token);
+      });
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, getAccessTokenSilently, setAccessToken, setOwnId]);
 
-  if (!accessToken) {
+  if (!accessToken || !ownId) {
     return <>Loading...</>;
   }
 
@@ -38,7 +43,11 @@ const WatchList = () => {
           const title = formData.get('title')!.toString();
           const watchAt = formData.get('watchAt')!.toString();
 
-          addWatchList(title, Date.parse(watchAt) / 1000, accessToken);
+          addWatchList(title, Date.parse(watchAt) / 1000, accessToken).then(
+            () => {
+              navigate(`/profile/${ownId}`);
+            }
+          );
         }}
       >
         <Container style={{ paddingTop: '8px' }}>
