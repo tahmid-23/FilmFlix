@@ -16,8 +16,8 @@ const App = () => {
           <Routes>
             <Route path="/">
               <Route index element={<LandingPage />} />
-              <Route path="feed" element={<Feed></Feed>} />
-              <Route path="friends" element={<Friends></Friends>} />
+              <Route path="feed" element={<Feed />} />
+              <Route path="friends" element={<Friends />} />
               <Route path="profile/:id" element={<Profile />} />
               <Route path="search" element={<Search />} />
               <Route path="review" element={<Review />} />
