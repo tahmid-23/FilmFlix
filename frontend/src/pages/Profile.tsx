@@ -90,9 +90,9 @@ const Profile = () => {
   }
 
   return (
-    <Container style={{ padding: '1vh 1vw' }} fluid>
+    <Container style={{ paddingLeft: 0, paddingRight: 0 }} fluid>
       <MainNav page="Profile"></MainNav>
-      <Row style={{ height: '40%' }}>
+      <Row style={{ height: '40%', width: '100%' }}>
         <ProfileCard
           name={profileJson.name}
           email={profileJson.email}
