@@ -148,7 +148,7 @@ const Profile = () => {
   return (
     <>
       <MainNav page="Profile" />
-      <div>{content}</div>
+      <div style={{ paddingBottom: '2vh', paddingTop: '2vh' }}>{content}</div>
     </>
   );
 };
