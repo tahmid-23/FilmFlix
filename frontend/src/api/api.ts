@@ -49,10 +49,9 @@ export async function getFriends(token: string) {
   throw Error();
 }
 
-
-export async function addFriend(username: string, token: string) {
+export async function addFriend(email: string, token: string) {
   const response = await postApi('/api/add-friend', token, {
-    username: username
+    email: email
   });
 
   if (response.status === 200) {
@@ -61,4 +60,3 @@ export async function addFriend(username: string, token: string) {
 
   throw Error();
 }
-

@@ -2,6 +2,7 @@ import express, { Request } from 'express';
 import { auth } from 'express-oauth2-jwt-bearer';
 import { PoolConnection, createPool } from 'mariadb';
 import cors from 'cors';
+import { UserInfoClient } from 'auth0';
 
 const app = express();
 
@@ -26,7 +27,15 @@ app.use(
   })
 );
 
-async function getAccountIdOrCreate(connection: PoolConnection, sub: string) {
+const auth0 = new UserInfoClient({
+  domain: 'dev-1grxamuresxko6xk.us.auth0.com'
+});
+
+async function getAccountIdOrCreate(
+  connection: PoolConnection,
+  token: string,
+  sub: string
+) {
   const rows = await connection.query(
     'SELECT account_id FROM account WHERE account_sub = ?',
     [sub]
@@ -35,9 +44,13 @@ async function getAccountIdOrCreate(connection: PoolConnection, sub: string) {
     return rows[0].account_id;
   }
 
+  const response = await auth0.getUserInfo(token);
+  const name = response.data.name;
+  const email = response.data.email;
+
   await connection.query(
-    'INSERT INTO account (account_sub, name, bio) VALUES (?, ?, ?)',
-    [sub, sub, `Member since ${new Date().getFullYear()}`]
+    'INSERT INTO account (account_sub, name, email, bio) VALUES (?, ?, ?, ?)',
+    [sub, name, email, `Member since ${new Date().getFullYear()}`]
   );
   const newRows = await connection.query(
     'SELECT account_id FROM account WHERE account_sub = ?',
@@ -97,15 +110,16 @@ app.get('/api/user/:id', async (req: Request<{ id: number }>, res) => {
 });
 
 app.get('/api/friends', async (req, res) => {
-  const sub = req.auth?.payload?.sub;
-  if (!sub) {
+  const token = req.auth?.token;
+  const sub = req.auth?.payload.sub;
+  if (!token || !sub) {
     res.sendStatus(500);
     return;
   }
 
   const connection = await pool.getConnection();
   try {
-    const accountId = await getAccountIdOrCreate(connection, sub);
+    const accountId = await getAccountIdOrCreate(connection, token, sub);
     const rows = await connection.query(
       'SELECT account_id, name FROM account INNER JOIN friend ON friend.second_friend_id = account.account_id AND friend.first_friend_id = ?',
       [accountId]
@@ -121,15 +135,16 @@ app.get('/api/friends', async (req, res) => {
 });
 
 app.get('/api/feed', async (req, res) => {
+  const token = req.auth?.token;
   const sub = req.auth?.payload?.sub;
-  if (!sub) {
+  if (!token || !sub) {
     res.sendStatus(500);
     return;
   }
 
   const connection = await pool.getConnection();
   try {
-    const accountId = await getAccountIdOrCreate(connection, sub);
+    const accountId = await getAccountIdOrCreate(connection, token, sub);
     const rows = await connection.query(
       'SELECT account_id, name FROM account INNER JOIN friend ON friend.second_friend_id = account.account_id AND friend.first_friend_id = ?',
       [accountId]
@@ -180,22 +195,23 @@ interface RequestWithBody<T> extends Request {
 app.use(express.json());
 
 interface FriendBody {
-  username: string;
+  email: string;
 }
 
 app.post('/api/add-friend', async (req: RequestWithBody<FriendBody>, res) => {
+  const token = req.auth?.token;
   const sub = req.auth?.payload?.sub;
-  if (!sub) {
+  if (!token || !sub) {
     res.sendStatus(500);
     return;
   }
 
   const connection = await pool.getConnection();
   try {
-    const senderId = await getAccountIdOrCreate(connection, sub);
+    const senderId = await getAccountIdOrCreate(connection, token, sub);
     const targets = await connection.query(
-      'SELECT account_id FROM account WHERE name = ?',
-      [req.body.username]
+      'SELECT account_id FROM account WHERE email = ?',
+      [req.body.email]
     );
     if (targets.length === 0) {
       res.status(404);
@@ -222,15 +238,16 @@ interface BioBody {
 }
 
 app.post('/api/bio', async (req: RequestWithBody<BioBody>, res) => {
+  const token = req.auth?.token;
   const sub = req.auth?.payload?.sub;
-  if (!sub) {
+  if (!token || !sub) {
     res.sendStatus(500);
     return;
   }
 
   const connection = await pool.getConnection();
   try {
-    const accountId = await getAccountIdOrCreate(connection, sub);
+    const accountId = await getAccountIdOrCreate(connection, token, sub);
     await connection.execute(
       'UPDATE account SET bio = ? WHERE account_id = ?',
       [req.body.bio, accountId]
@@ -252,15 +269,16 @@ interface AddMovieBody {
 }
 
 app.post('/api/add-review', async (req: RequestWithBody<AddMovieBody>, res) => {
+  const token = req.auth?.token;
   const sub = req.auth?.payload?.sub;
-  if (!sub) {
+  if (!token || !sub) {
     res.sendStatus(500);
     return;
   }
 
   const connection = await pool.getConnection();
   try {
-    const accountId = await getAccountIdOrCreate(connection, sub);
+    const accountId = await getAccountIdOrCreate(connection, token, sub);
     await connection.execute(
       `INSERT INTO review (account_id, movie_title, rating, description, timestamp) VALUES (?, ?, ?, ?, ?)`,
       [
@@ -289,15 +307,16 @@ interface AddWatchListBody {
 app.post(
   '/api/add-watch-list',
   async (req: RequestWithBody<AddWatchListBody>, res) => {
+    const token = req.auth?.token;
     const sub = req.auth?.payload?.sub;
-    if (!sub) {
+    if (!token || !sub) {
       res.sendStatus(500);
       return;
     }
 
     const connection = await pool.getConnection();
     try {
-      const accountId = await getAccountIdOrCreate(connection, sub);
+      const accountId = await getAccountIdOrCreate(connection, token, sub);
       await connection.execute(
         `INSERT INTO planned_movie (account_id, movie_title, watch_at, timestamp) VALUES (?, ?, ?, ${Date.now()})`,
         [accountId, req.body.movieTitle, req.body.watchAt, Date.now()]
