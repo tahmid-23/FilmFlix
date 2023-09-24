@@ -1,5 +1,4 @@
 import { Button, Stack } from 'react-bootstrap';
-import '../main.css';
 
 import MainNav from '../components/MainNav';
 import FriendPopup from '../components/FriendPopup';
