@@ -1,5 +1,5 @@
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import MovieInfo from './MovieInfo';
 
 export default function SearchBar() {
@@ -15,6 +15,26 @@ export default function SearchBar() {
       />
     );
   });
+
+  const queryMovieDb = useCallback(
+    async (title: string) => {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/search/movie?query=/${title}&include_adult=true&language=en-US&page=1`,
+        {
+          method: 'GET',
+          headers: {
+            accept: 'application/json',
+            Authorization:
+              'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMWMxMDU2Y2UyYmMwMmRjOGU0OWY5NTQzYjU0MjRkMCIsInN1YiI6IjY1MGZiMDE5MDljMjRjMDBlMmVhOTMyMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4ZlD7cWUhr2ey7D9_W98MHaJqwWUdc-4JPp_Ey0L55U'
+          }
+        }
+      );
+
+      const json = await response.json();
+      return setMovieList(json.results);
+    },
+    [setMovieList]
+  );
 
   return (
     <div className="input-group rounded-lg">
@@ -35,7 +55,7 @@ export default function SearchBar() {
           <Col className="col-2" style={{ width: 'fit-content' }}>
             <Button
               onClick={() => {
-                testApi(searchInput);
+                queryMovieDb(searchInput);
               }}
             >
               Submit
@@ -48,22 +68,4 @@ export default function SearchBar() {
       </Container>
     </div>
   );
-  async function testApi(title: string) {
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMWMxMDU2Y2UyYmMwMmRjOGU0OWY5NTQzYjU0MjRkMCIsInN1YiI6IjY1MGZiMDE5MDljMjRjMDBlMmVhOTMyMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4ZlD7cWUhr2ey7D9_W98MHaJqwWUdc-4JPp_Ey0L55U'
-      }
-    };
-
-    fetch(
-      `https://api.themoviedb.org/3/search/movie?query=/${title}&include_adult=true&language=en-US&page=1`,
-      options
-    )
-      .then((response) => response.json())
-      .then((response) => setMovieList(response.results))
-      .catch((err) => console.error(err));
-  }
 }

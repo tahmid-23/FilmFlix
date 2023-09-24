@@ -65,19 +65,17 @@ export default function Feed() {
   }
 
   return (
-    <>
-      <Container
-        fluid
-        style={{
-          paddingLeft: '0',
-          paddingRight: '0',
-          height: '100%',
-          minHeight: '100vh'
-        }}
-      >
-        <MainNav page="Feed" />
-        {content}
-      </Container>
-    </>
+    <Container
+      fluid
+      style={{
+        paddingLeft: '0',
+        paddingRight: '0',
+        height: '100%',
+        minHeight: '100vh'
+      }}
+    >
+      <MainNav page="Feed" />
+      {content}
+    </Container>
   );
 }

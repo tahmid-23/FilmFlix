@@ -1,4 +1,3 @@
-import { Modal } from 'react-bootstrap';
 import { ClipLoader } from 'react-spinners';
 
 const Loading = () => {

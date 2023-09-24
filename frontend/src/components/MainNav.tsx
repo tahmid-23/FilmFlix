@@ -79,44 +79,39 @@ export default function MainNav({ page }: Page) {
       }
       return <BasicLink key={tab} tab={tab} />;
     });
-
-    // Feed
   }
 
   return (
-    // Change font to match the outline
-    <>
-      <Navbar
-        data-bs-theme="dark"
-        style={{ background: '#3E3E3E', fontSize: 25 }}
+    <Navbar
+      data-bs-theme="dark"
+      style={{ background: '#3E3E3E', fontSize: 25 }}
+    >
+      <Navbar.Brand
+        href="/"
+        style={{
+          fontSize: 45,
+          fontFamily: 'Koulen',
+          marginRight: 20,
+          marginLeft: 60
+        }}
       >
-        <Navbar.Brand
-          href="/"
-          style={{
-            fontSize: 45,
-            fontFamily: 'Koulen',
-            marginRight: 20,
-            marginLeft: 60
-          }}
-        >
-          {' '}
-          FilmFlix
-        </Navbar.Brand>
-        <div style={{ width: '70%' }} />
-        <Nav
-          variant="tabs"
-          className="me-auto"
-          style={{
-            fontFamily: 'Ubuntu',
-            lineHeight: '133.023%',
-            fontWeight: 400,
-            fontStyle: 'normal',
-            border: 0
-          }}
-        >
-          {navLinks}
-        </Nav>
-      </Navbar>
-    </>
+        {' '}
+        FilmFlix
+      </Navbar.Brand>
+      <div style={{ width: '70%' }} />
+      <Nav
+        variant="tabs"
+        className="me-auto"
+        style={{
+          fontFamily: 'Ubuntu',
+          lineHeight: '133.023%',
+          fontWeight: 400,
+          fontStyle: 'normal',
+          border: 0
+        }}
+      >
+        {navLinks}
+      </Nav>
+    </Navbar>
   );
 }
