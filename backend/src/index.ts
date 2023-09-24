@@ -305,7 +305,7 @@ app.post('/api/add-review', async (req: RequestWithBody<AddMovieBody>, res) => {
         req.body.movieTitle,
         req.body.rating,
         req.body.description,
-        Date.now()
+        Math.round(Date.now() / 1000)
       ]
     );
 
@@ -337,8 +337,13 @@ app.post(
     try {
       const accountId = await getAccountIdOrCreate(connection, token, sub);
       await connection.execute(
-        `INSERT INTO planned_movie (account_id, movie_title, watch_at, timestamp) VALUES (?, ?, ?, ${Date.now()})`,
-        [accountId, req.body.movieTitle, req.body.watchAt, Date.now()]
+        `INSERT INTO planned_movie (account_id, movie_title, watch_at, timestamp) VALUES (?, ?, ?, ?)`,
+        [
+          accountId,
+          req.body.movieTitle,
+          req.body.watchAt,
+          Math.round(Date.now() / 1000)
+        ]
       );
 
       res.sendStatus(200);

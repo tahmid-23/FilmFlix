@@ -11,25 +11,23 @@ export default function LandingPage() {
   }
 
   return (
-    <>
-      <Container
-        fluid
-        style={{
-          paddingLeft: '0',
-          paddingRight: '0'
-        }}
-      >
-        <MainNav page="LandingPage" />
-        <Stack style={{ alignItems: 'center', marginTop: '10vh' }} gap={1}>
-          <h2 style={{ color: 'white', textAlign: 'center', width: '50%' }}>
-            See what movies your friends are watching, connect with a vibrant
-            community of film lovers - Join FilmFlix today!
-          </h2>
-          <Button variant="primary" onClick={() => loginWithRedirect()}>
-            Create an Account!
-          </Button>
-        </Stack>
-      </Container>
-    </>
+    <Container
+      fluid
+      style={{
+        paddingLeft: '0',
+        paddingRight: '0'
+      }}
+    >
+      <MainNav page="LandingPage" />
+      <Stack style={{ alignItems: 'center', marginTop: '10vh' }} gap={1}>
+        <h2 style={{ color: 'white', textAlign: 'center', width: '50%' }}>
+          See what movies your friends are watching, connect with a vibrant
+          community of film lovers - Join FilmFlix today!
+        </h2>
+        <Button variant="primary" onClick={() => loginWithRedirect()}>
+          Create an Account!
+        </Button>
+      </Stack>
+    </Container>
   );
 }
