@@ -85,7 +85,7 @@ app.get('/api/user/:id', async (req: Request<{ id: number }>, res) => {
 
   try {
     const accounts = await connection.query(
-      'SELECT name, bio FROM account WHERE account_id = ?',
+      'SELECT name, email, bio FROM account WHERE account_id = ?',
       [req.params.id]
     );
 
@@ -119,6 +119,7 @@ app.get('/api/user/:id', async (req: Request<{ id: number }>, res) => {
 
     res.json({
       name: account.name,
+      email: account.email,
       bio: account.bio,
       reviews: reviews,
       watchList: watchList

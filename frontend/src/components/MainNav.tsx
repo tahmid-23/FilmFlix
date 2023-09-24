@@ -17,8 +17,8 @@ function BasicLink({ tab }: { tab: string }) {
 }
 
 const navTabs: Record<string, string[]> = {
-  Friends: ['Search', 'Feed', 'Friends', 'Logout'],
-  Feed: ['Search', 'Friends', 'Logout']
+  Friends: ["Profile", 'Search', 'Feed', 'Friends', 'Logout'],
+  Feed: ["Profile", 'Search', 'Friends', 'Logout']
 };
 
 export default function MainNav({ page }: Page) {
@@ -42,29 +42,35 @@ export default function MainNav({ page }: Page) {
         Log In
       </Nav.Link>
     ];
-  } else if (page === 'Friends') {
-    navLinks = [
-      <Nav.Link
-        style={{ paddingRight: 35 }}
-        onClick={() => {
-          if (isAuthenticated) {
-            getAccessTokenSilently()
-              .then(getOwnId)
-              .then((id) => {
-                navigate(`/profile/${id}`);
-              });
-          }
-        }}
-      >
-        Profile
-      </Nav.Link>,
-      <BasicLink tab="Feed" />,
-      <BasicLink tab="Friends" />,
-      <Nav.Link style={{ paddingRight: 35 }} onClick={() => logout()}>
-        Logout
-      </Nav.Link>
-    ];
   } else {
+    
+    navLinks = navTabs[page].map((tab: string) => {
+      if(tab === 'Logout') {
+        return (<Nav.Link style={{ paddingRight: 35 }} onClick={() => logout()}>
+        Logout
+        </Nav.Link>); 
+      }
+      else if(tab === 'Profile') {
+        return (
+          <Nav.Link
+            style={{ paddingRight: 35 }}
+            onClick={() => {
+              if (isAuthenticated) {
+                getAccessTokenSilently()
+                  .then(getOwnId)
+                  .then((id) => {
+                    navigate(`/profile/${id}`);
+                  });
+              }
+            }}
+          >
+          Profile
+          </Nav.Link>
+        ); 
+      }
+      return <BasicLink tab={tab} />;
+    });
+
     // Feed
     navLinks = [
       <Nav.Link

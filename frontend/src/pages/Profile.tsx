@@ -93,7 +93,7 @@ const Profile = () => {
       <Row style={{ height: '40%' }}>
         <ProfileCard
           name={profileJson.name}
-          email="sample@gmail.com"
+          email={profileJson.email}
           bio={profileJson.bio}
         />
       </Row>
