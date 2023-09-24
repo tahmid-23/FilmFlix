@@ -20,7 +20,7 @@ const navTabs: Record<string, string[]> = {
 };
 
 export default function MainNav({ page }: Page) {
-  const { loginWithRedirect } = useAuth0();
+  const { loginWithRedirect, logout } = useAuth0();
 
   let navLinks: any[];
   if (page === 'LandingPage') {
@@ -38,11 +38,22 @@ export default function MainNav({ page }: Page) {
         Log In
       </Nav.Link>
     ];
+  } else if (page === 'Friends') {
+    navLinks = [
+      <BasicLink tab="Feed" />,
+      <BasicLink tab="Friends" />,
+      <Nav.Link style={{ paddingRight: 35 }} onClick={() => logout()}>
+        Logout
+      </Nav.Link>
+    ];
   } else {
-
-    navLinks = navTabs[page].map((tab: string) => {
-      return <BasicLink tab={tab} />;
-    });
+    // Feed
+    navLinks = [
+      <BasicLink tab="Friends" />,
+      <Nav.Link style={{ paddingRight: 35 }} onClick={() => logout()}>
+        Logout
+      </Nav.Link>
+    ];
   }
 
   return (
@@ -50,7 +61,7 @@ export default function MainNav({ page }: Page) {
     <>
       <Navbar
         data-bs-theme="dark"
-        style={{ background: '#3E3E3E', fontSize: 25}}
+        style={{ background: '#3E3E3E', fontSize: 25 }}
       >
         <Navbar.Brand
           href="./"

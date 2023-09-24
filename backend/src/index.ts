@@ -201,10 +201,9 @@ app.post('/api/add-friend', async (req: RequestWithBody<FriendBody>, res) => {
       res.status(404);
       return;
     }
-    console.log(targets);
     const targetId = targets[0].account_id;
 
-    connection.execute(
+    await connection.execute(
       'INSERT INTO friend (first_friend_id, second_friend_id) VALUES (?, ?), (?, ?)',
       [senderId, targetId, targetId, senderId]
     );
