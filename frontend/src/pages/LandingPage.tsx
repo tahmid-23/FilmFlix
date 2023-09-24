@@ -14,14 +14,21 @@ export default function LandingPage() {
     <>
       <MainNav page="LandingPage" />
       <Stack style={{ alignItems: 'center', padding: '2vh 2vw' }} gap={1}>
-        <h2 style={{ color: 'white', textAlign: 'center', width: '50%' }}>
+        <h2
+          style={{
+            color: 'white',
+            textAlign: 'center',
+            width: '50%',
+            marginTop: '3vh'
+          }}
+        >
           See what movies your friends are watching, connect with a vibrant
           community of film lovers - Join FilmFlix today!
         </h2>
         <Button
           variant="primary"
           size="lg"
-          style={{ marginTop: '5vh' }}
+          style={{ marginTop: '3vh' }}
           onClick={() => loginWithRedirect()}
         >
           Create an Account!
