@@ -14,7 +14,6 @@ export default function FriendPopup({ show, setVisible }: FriendPopupInput) {
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [accessToken, setAccessToken] = useState<string>();
 
-  console.log(show);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -44,7 +43,7 @@ export default function FriendPopup({ show, setVisible }: FriendPopupInput) {
 
               const username = formData.get('email')!.toString();
 
-              addFriend(username, accessToken);
+              addFriend(username, accessToken).then(setVisible(false));
             }}
           >
             <Modal.Header closeButton>
