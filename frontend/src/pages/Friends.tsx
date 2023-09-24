@@ -8,12 +8,12 @@ import { AiOutlineUserAdd } from 'react-icons/ai';
 import { getFriends } from '../api/api';
 import { useAuth0 } from '@auth0/auth0-react';
 import ProfileCard from '../components/ProfileCard';
+import { Link } from 'react-router-dom';
 
 export default function Friends({ props }: any) {
-  
   const [show, setShowPopup] = useState(false);
 
-  const [listOfFriends, setFriends] = useState([])
+  const [listOfFriends, setFriends] = useState([]);
 
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();
 
@@ -23,15 +23,27 @@ export default function Friends({ props }: any) {
     }
   }, [isAuthenticated]);
 
-  if(!listOfFriends) {
-    return (
-      <p>Loading...</p>
-    )
+  if (!listOfFriends) {
+    return <p>Loading...</p>;
   }
 
   let friendCards = listOfFriends.map((friend: any) => {
-    return <ProfileCard name={friend.name} email={friend.email} bio={friend.bio}></ProfileCard>
-  })
+    return (
+      <ProfileCard
+        key={friend.account_id}
+        name={
+          <Link
+            to={`/profile/${friend.account_id}`}
+            style={{ color: 'inherit', textDecoration: 'none' }}
+          >
+            {friend.name}
+          </Link>
+        }
+        email={friend.email}
+        bio={friend.bio}
+      ></ProfileCard>
+    );
+  });
 
   return (
     <Container
