@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 import {AiOutlineUserAdd} from 'react-icons/ai'
 import ProfileCard from '../components/ProfileCard';
+import Profile from './Profile';
 
 export default function Friends({ props }: any) {
 
@@ -25,10 +26,9 @@ export default function Friends({ props }: any) {
             <Button onClick={() => {showPopup(true)}}>
                 <AiOutlineUserAdd size={40}></AiOutlineUserAdd>
             </Button>
-
+            <ProfileCard />
             <FriendPopup show={show} setVisible={showPopup}></FriendPopup>
           </div>
-          
       </Container>
 
 
