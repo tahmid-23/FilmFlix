@@ -1,6 +1,7 @@
 import { Container } from 'react-bootstrap';
 import MainNav from '../components/MainNav';
 import FriendPopup from '../components/FriendPopup';
+import ProfileCard from '../components/ProfileCard';
 
 // Add typing for props when necessary
 export default function Friends({ props }: any) {
