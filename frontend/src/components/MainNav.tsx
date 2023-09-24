@@ -1,5 +1,4 @@
 import { Navbar, Container, Nav, Row, Col } from 'react-bootstrap';
-
 import { useAuth0 } from '@auth0/auth0-react';
 // add specific typing with interface if necessary
 
