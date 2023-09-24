@@ -15,7 +15,6 @@ export default function Friends({ props }: any) {
 
   const [listOfFriends, setFriends] = useState([])
 
-  const [accessToken, setAccessToken] = useState<string>();
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();
 
   useEffect(() => {

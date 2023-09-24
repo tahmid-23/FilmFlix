@@ -14,7 +14,6 @@ export default function FriendPopup({ show, setVisible }: FriendPopupInput) {
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [accessToken, setAccessToken] = useState<string>();
 
-  console.log(show);
 
   useEffect(() => {
     if (isAuthenticated) {
