@@ -19,7 +19,8 @@ function BasicLink({ tab }: { tab: string }) {
 const navTabs: Record<string, string[]> = {
   Friends: ["Profile", 'Search', 'Feed', 'Logout'],
   Feed: ["Profile", 'Search', 'Friends', 'Logout'], 
-  Profile: ["Search", "Feed", "Friends", "Logout"]
+  Profile: ["Search", "Feed", "Friends", "Logout"], 
+  Search: ['Profile', 'Feed', 'Friends', 'Logout']
 };
 
 export default function MainNav({ page }: Page) {
@@ -37,7 +38,7 @@ export default function MainNav({ page }: Page) {
         Sign Up
       </Nav.Link>,
       <Nav.Link
-        style={{ paddingRight: 15, paddingLeft: 15}}
+        style={{ paddingRight: 15, paddingLeft: 15 }}
         onClick={() => loginWithRedirect()}
       >
         Log In
@@ -45,17 +46,20 @@ export default function MainNav({ page }: Page) {
     ];
   } else {
     navLinks = navTabs[page].map((tab: string) => {
-
-      console.log(tab); 
-      if(tab === 'Logout') {
-        return (<Nav.Link style={{ paddingRight: 15, paddingLeft: 15 }} onClick={() => logout()}>
-        Logout
-        </Nav.Link>); 
-      }
-      else if(tab === 'Profile') {
+      console.log(tab);
+      if (tab === 'Logout') {
         return (
           <Nav.Link
-            style={{ paddingRight: 15, paddingLeft:15 }}
+            style={{ paddingRight: 15, paddingLeft: 15 }}
+            onClick={() => logout()}
+          >
+            Logout
+          </Nav.Link>
+        );
+      } else if (tab === 'Profile') {
+        return (
+          <Nav.Link
+            style={{ paddingRight: 15, paddingLeft: 15 }}
             onClick={() => {
               if (isAuthenticated) {
                 getAccessTokenSilently()
@@ -66,9 +70,9 @@ export default function MainNav({ page }: Page) {
               }
             }}
           >
-          Profile
+            Profile
           </Nav.Link>
-        ); 
+        );
       }
       return <BasicLink tab={tab} />;
     });
