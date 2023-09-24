@@ -24,7 +24,7 @@ export default function LandingPage() {
           See what movies your friends are watching, connect with a vibrant
           community of film lovers - Join FilmFlix today!
         </h2>
-        <Button variant="primary" onClick={() => loginWithRedirect()}>
+        <Button variant="primary" size="lg" style={{marginTop: "5vh"}} onClick={() => loginWithRedirect()}>
           Create an Account!
         </Button>
       </Stack>
