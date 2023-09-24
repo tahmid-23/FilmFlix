@@ -58,18 +58,20 @@ export default function Friends() {
       }}
     >
       <MainNav page="Friends" />
-      <div style={{ display: 'flex', marginTop: '12vh', marginLeft: '10vw' }}>
-        <h1 style={{ fontSize: 70, color: 'white', marginRight: '3vw' }}>
-          Friends
+      <div style={{ display: 'flex', marginTop: '2vh', marginLeft: '1vw' }}>
+        <h1 style={{ fontSize: '25 rem', color: 'white', paddingRight: '1vw' }}>
+          <b>Friends</b>
         </h1>
         <Button onClick={() => setShowPopup(true)}>
-          <AiOutlineUserAdd size={40} />
+          <AiOutlineUserAdd size={35} />
         </Button>
-        <FriendPopup
-          show={show}
-          setVisible={setShowPopup}
-          onAddFriend={refreshFriends}
-        />
+        <div style={{ paddingTop: '2em' }}>
+          <FriendPopup
+            show={show}
+            setVisible={setShowPopup}
+            onAddFriend={refreshFriends}
+          />
+        </div>
       </div>
 
       {friendCards}
