@@ -1,4 +1,5 @@
 import { Stack } from 'react-bootstrap';
+import { BsPersonCircle } from 'react-icons/bs';
 
 interface ProfileCardProps {
   name: string;
@@ -8,14 +9,22 @@ interface ProfileCardProps {
 
 const ProfileCard = ({ name, email, bio }: ProfileCardProps) => {
   return (
-    <Stack gap={2} style={{ padding: '1vh 1vw' }}>
-      <div>
-        <h2 style={{ margin: 0, color: 'white' }}>
-          <b>{name}</b>
-        </h2>
-        <h6 style={{ color: 'gray', margin: 0 }}>{email}</h6>
+    <Stack direction="horizontal" style={{ padding: '2vh 2vw' }}>
+      <div className="icon-container">
+        <BsPersonCircle
+          style={{ color: 'white', width: '100px', height: '100px' }}
+          className="profile-icon"
+        />
       </div>
-      <p style={{ margin: 0, color: 'white' }}>{bio}</p>
+      <Stack gap={2} style={{ padding: '1vh 1vw' }}>
+        <div>
+          <h2 style={{ margin: 0, color: 'white' }}>
+            <b>{name}</b>
+          </h2>
+          <h6 style={{ color: 'gray', margin: 0 }}>{email}</h6>
+        </div>
+        <p style={{ margin: 0, color: 'white' }}>{bio}</p>
+      </Stack>
     </Stack>
   );
 };
