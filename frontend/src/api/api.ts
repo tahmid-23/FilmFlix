@@ -89,3 +89,20 @@ export async function addReview(
 
   throw Error();
 }
+
+export async function addWatchList(
+  title: string,
+  watchAt: Date,
+  token: string
+) {
+  const response = await postApi('/api/add-watch-list', token, {
+    movieTitle: title,
+    watchAt: watchAt.getTime() / 1000
+  });
+
+  if (response.status === 200) {
+    return;
+  }
+
+  throw Error();
+}
