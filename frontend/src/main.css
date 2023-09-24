@@ -1,3 +1,7 @@
+#root {
+  overflow-x: hidden;
+}
+
 h1 {
   color: white;
 }
