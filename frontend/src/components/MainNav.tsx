@@ -20,7 +20,8 @@ const navTabs: Record<string, string[]> = {
   Friends: ['Profile', 'Search', 'Feed', 'Logout'],
   Feed: ['Profile', 'Search', 'Friends', 'Logout'],
   Profile: ['Search', 'Feed', 'Friends', 'Logout'],
-  Search: ['Profile', 'Feed', 'Friends', 'Logout']
+  Search: ['Profile', 'Feed', 'Friends', 'Logout'],
+  Review: ['Profile', 'Search', 'Feed', 'Friends', 'Logout']
 };
 
 export default function MainNav({ page }: Page) {
