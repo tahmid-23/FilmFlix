@@ -39,7 +39,6 @@ export default function MainNav({ page }: Page) {
       </Nav.Link>
     ];
   } else {
-    console.log('page');
 
     navLinks = navTabs[page].map((tab: string) => {
       return <BasicLink tab={tab} />;
@@ -51,7 +50,7 @@ export default function MainNav({ page }: Page) {
     <>
       <Navbar
         data-bs-theme="dark"
-        style={{ background: '#3E3E3E', fontSize: 25 }}
+        style={{ background: '#3E3E3E', fontSize: 25}}
       >
         <Navbar.Brand
           href="./"

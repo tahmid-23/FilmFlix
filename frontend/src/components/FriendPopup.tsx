@@ -1,70 +1,41 @@
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useAuth0 } from '@auth0/auth0-react';
-import { addFriend } from '../api/api';
 
-interface FriendPopupInput {
-  setVisible: Function;
-  show: boolean;
-}
-export default function FriendPopup({ show, setVisible }: FriendPopupInput) {
-  const { isAuthenticated, getAccessTokenSilently } = useAuth0();
-  const [accessToken, setAccessToken] = useState<string>();
+export default function FriendPopup() {
+  const [showModal, setShowModal] = useState(false);
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      getAccessTokenSilently().then(setAccessToken);
-    }
-  }, [isAuthenticated, getAccessTokenSilently]);
-
-  if (!accessToken) {
-    return <>Loading...</>;
-  }
+  const handleClose = () => setShowModal(false);
+  const handleShow = () => setShowModal(true);
 
   return (
     <div className="text-center">
-      <Modal
-        show={show}
-        onHide={() => {
-          setVisible(false);
-        }}
-        centered
-      >
-        <Form.Group controlId="formUsername">
-          <Form
-            onSubmit={(e: FormEvent<HTMLFormElement>) => {
-              e.preventDefault();
+      <Button variant="primary" onClick={handleShow}>
+        Add Friends
+      </Button>
 
-              const formData = new FormData(e.currentTarget);
-              const username = formData.get('username')!.toString();
-
-              addFriend(username, accessToken);
-            }}
-          >
-            <Modal.Header closeButton>
-              <Modal.Title>Add a friend:</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
+      <Modal show={showModal} onHide={handleClose} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Search for a user:</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group controlId="formUsername">
               <Form.Label>Enter a username</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Username"
-                name="username"
-              />
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={() => setVisible(false)}>
-                Close
-              </Button>
-              <Button variant="primary" type="submit">
-                Add
-              </Button>
-            </Modal.Footer>
+              <Form.Control type="text" placeholder="Username" />
+            </Form.Group>
           </Form>
-        </Form.Group>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Search
+          </Button>
+        </Modal.Footer>
       </Modal>
     </div>
   );
