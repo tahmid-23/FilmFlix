@@ -18,10 +18,7 @@ Before you begin, ensure you have met the following requirements:
 
 ## Installing FilmFlix
 1. Clone the repository to your local machine w/ the following command:\
-Linux and macOS:\
-```sudo git clone https://github.com/tahmid-23/FilmFlix.git```\
-Windows:\
-```git clone https://github.com/tahmid-23/FilmFlix.git```
+```git clone https://github.com/tahmid-23/FilmFlix.git```\
 
 ## License
 This project is **free to use** and does not contains any license.
