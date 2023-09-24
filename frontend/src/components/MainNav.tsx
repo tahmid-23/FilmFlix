@@ -17,9 +17,9 @@ function BasicLink({ tab }: { tab: string }) {
 }
 
 const navTabs: Record<string, string[]> = {
-  Friends: ["Profile", 'Search', 'Feed', 'Logout'],
-  Feed: ["Profile", 'Search', 'Friends', 'Logout'], 
-  Profile: ["Search", "Feed", "Friends", "Logout"], 
+  Friends: ['Profile', 'Search', 'Feed', 'Logout'],
+  Feed: ['Profile', 'Search', 'Friends', 'Logout'],
+  Profile: ['Search', 'Feed', 'Friends', 'Logout'],
   Search: ['Profile', 'Feed', 'Friends', 'Logout']
 };
 
@@ -88,7 +88,7 @@ export default function MainNav({ page }: Page) {
         style={{ background: '#3E3E3E', fontSize: 25 }}
       >
         <Navbar.Brand
-          href="./"
+          href="/"
           style={{
             fontSize: 45,
             fontFamily: 'Koulen',
