@@ -1,7 +1,13 @@
 import { Stack } from 'react-bootstrap';
 import { BsPersonCircle } from 'react-icons/bs';
 
-export default function ProfileCard() {
+interface ProfileCardProps {
+  name: string;
+  email: string;
+  bio: string;
+}
+
+const ProfileCard = ({ name, email, bio }: ProfileCardProps) => {
   return (
     <Stack direction="horizontal" style={{ padding: '2vh 2vw' }}>
       <div className="icon-container">
@@ -21,4 +27,6 @@ export default function ProfileCard() {
       </Stack>
     </Stack>
   );
-}
+};
+
+export default ProfileCard;
