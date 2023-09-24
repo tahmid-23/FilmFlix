@@ -7,10 +7,12 @@ export default function SearchBar() {
 
   let [movieList, setMovieList] = useState([]); 
 
-  let movieText = movieList.map((descript) => {
+  let movieText = movieList.map((descript:any) => {
+
+    console.log(descript); 
 
     
-    return <p color="white"> {JSON.stringify(descript)}</p>
+    return <p color="white" key={descript.id}> {descript.original_title}</p>
 
 
   }); 
