@@ -38,15 +38,17 @@ export default function MainNav({ page }: Page) {
         Log In
       </Nav.Link>
     ];
-  } else if (page === 'Friends') {
-    navLinks = [
-      <BasicLink tab="Feed" />,
-      <BasicLink tab="Friends" />,
-      <Nav.Link style={{ paddingRight: 35 }} onClick={() => logout()}>
-        Logout
-      </Nav.Link>
-    ];
   } else {
+    
+    navLinks = navTabs[page].map((tab: string) => {
+      if(tab === 'Logout') {
+        return (<Nav.Link style={{ paddingRight: 35 }} onClick={() => logout()}>
+        Logout
+        </Nav.Link>); 
+      }
+      return <BasicLink tab={tab} />;
+    });
+
     // Feed
     navLinks = [
       <BasicLink tab="Friends" />,
