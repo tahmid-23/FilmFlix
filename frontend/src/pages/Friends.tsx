@@ -33,7 +33,7 @@ export default function Friends() {
   } else {
     content = (
       <>
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', marginBottom: '4vh' }}>
           <Stack direction="horizontal" gap={2}>
             <h1 style={{ fontSize: '25 rem' }}>
               <b>Friends {`(${listOfFriends.length})`}</b>
@@ -53,19 +53,21 @@ export default function Friends() {
         </div>
         {listOfFriends.map((friend: any) => {
           return (
-            <ProfileCard
-              key={friend.account_id}
-              name={
-                <Link
-                  to={`/profile/${friend.account_id}`}
-                  style={{ color: 'inherit', textDecoration: 'none' }}
-                >
-                  {friend.name}
-                </Link>
-              }
-              email={friend.email}
-              bio={friend.bio}
-            />
+            <div style={{ marginTop: '2vh' }}>
+              <ProfileCard
+                key={friend.account_id}
+                name={
+                  <Link
+                    to={`/profile/${friend.account_id}`}
+                    style={{ color: 'inherit', textDecoration: 'none' }}
+                  >
+                    {friend.name}
+                  </Link>
+                }
+                email={friend.email}
+                bio={friend.bio}
+              />
+            </div>
           );
         })}
       </>
