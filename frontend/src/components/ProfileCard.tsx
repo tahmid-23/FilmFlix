@@ -1,8 +1,9 @@
+import { ReactNode } from 'react';
 import { Stack } from 'react-bootstrap';
 import { BsPersonCircle } from 'react-icons/bs';
 
 interface ProfileCardProps {
-  name: string;
+  name: ReactNode;
   email: string;
   bio: string;
 }
