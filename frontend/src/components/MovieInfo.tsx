@@ -1,6 +1,6 @@
 import { Card, Stack, Button, Nav } from 'react-bootstrap';
 import {IoMdArrowDropdown, IoMdArrowDropup} from 'react-icons/io'
-import { Navigate, useNavigate} from 'react-router-dom';
+import { Navigate, createSearchParams, useNavigate} from 'react-router-dom';
 
 
 import { useState } from 'react';
@@ -28,7 +28,12 @@ export default function MovieInfo({ title, date, description}: MovieInfoProps) {
             <Card.Title>{title}</Card.Title>
             <Card.Text>{date}</Card.Text>
             <Button onClick={() => {
-                navigate("/Review", {state: {title: title}}); 
+                navigate({
+                    pathname: "/Review", 
+                    search: createSearchParams({
+                        title: title
+                    }).toString()
+                })
             }}>
                 Review
             </Button>
