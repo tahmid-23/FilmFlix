@@ -5,8 +5,12 @@ export default function FeedBox({ props }: any) {
     <>
       <Card style={{ borderRadius: '15px', marginTop: '10px' }}>
         <div style={{ padding: '10px' }}>
-          <Card.Title>Steven Ha</Card.Title>
-          <Card.Subtitle>Watching Soon · 1 hr ago</Card.Subtitle>
+          <Card.Title>
+            <b>Steven Ha</b>
+          </Card.Title>
+          <Card.Subtitle style={{ paddingBottom: '7px' }}>
+            Watching Soon · 1 hr ago
+          </Card.Subtitle>
           <Card.Text>
             <b>Barbie Movie</b>
             <p>
