@@ -7,12 +7,22 @@ import Profile from './pages/Profile';
 import Search from './pages/Search';
 import Review from './pages/Review';
 import WatchList from './pages/WatchList';
+import { Container } from 'react-bootstrap';
 
 const App = () => {
   return (
-    <>
-      <BrowserRouter>
-        <Auth0ProviderWithNavigate>
+    <BrowserRouter>
+      <Auth0ProviderWithNavigate>
+        <Container
+          style={{
+            paddingLeft: 0,
+            paddingRight: 0,
+            width: '100vw',
+            minHeight: '100vh',
+            overflow: 'scroll'
+          }}
+          fluid
+        >
           <Routes>
             <Route path="/">
               <Route index element={<LandingPage />} />
@@ -24,9 +34,9 @@ const App = () => {
               <Route path="watch-list" element={<WatchList />} />
             </Route>
           </Routes>
-        </Auth0ProviderWithNavigate>
-      </BrowserRouter>
-    </>
+        </Container>
+      </Auth0ProviderWithNavigate>
+    </BrowserRouter>
   );
 };
 

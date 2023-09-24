@@ -36,7 +36,7 @@ export default function Feed() {
 
     content = (
       <Container>
-        <h1 style={{ marginTop: '10px', color: 'white' }}>
+        <h1>
           <b>Friend Feed</b>
         </h1>
         {entries.map((entry) => {
@@ -65,17 +65,9 @@ export default function Feed() {
   }
 
   return (
-    <Container
-      fluid
-      style={{
-        paddingLeft: '0',
-        paddingRight: '0',
-        height: '100%',
-        minHeight: '100vh'
-      }}
-    >
+    <>
       <MainNav page="Feed" />
-      {content}
-    </Container>
+      <div style={{ padding: '2vh 2vw' }}>{content}</div>
+    </>
   );
 }

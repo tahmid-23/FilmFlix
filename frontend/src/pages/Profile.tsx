@@ -110,16 +110,15 @@ const Profile = () => {
 
     content = (
       <>
-        <Container style={{ marginLeft: 0 }}>
+        <Container style={{ margin: 0 }}>
           <ProfileCard
             name={profileJson.name}
             email={profileJson.email}
             bio={profileJson.bio}
           />
         </Container>
-        <Container fluid>
-          <Row style={{ height: '60%', width: '100vw' }}>
-            {' '}
+        <Container style={{ margin: 0, width: '100vw' }}>
+          <Row style={{ width: '100vw' }}>
             <Col>
               <Card style={{ height: '100%' }}>
                 <Card.Header>
@@ -147,13 +146,10 @@ const Profile = () => {
   }
 
   return (
-    <Container
-      style={{ paddingLeft: 0, paddingRight: 0, overflow: 'hidden' }}
-      fluid
-    >
+    <>
       <MainNav page="Profile" />
-      {content}
-    </Container>
+      <div>{content}</div>
+    </>
   );
 };
 

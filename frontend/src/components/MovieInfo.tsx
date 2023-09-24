@@ -23,7 +23,6 @@ export default function MovieInfo({
       <Card
         style={{
           borderRadius: '15px',
-          marginTop: '10px',
           width: '100%',
           height: '130px'
         }}

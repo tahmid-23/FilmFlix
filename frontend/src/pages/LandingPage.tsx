@@ -1,4 +1,4 @@
-import { Button, Container, Stack } from 'react-bootstrap';
+import { Button, Stack } from 'react-bootstrap';
 import MainNav from '../components/MainNav';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom';
@@ -11,15 +11,9 @@ export default function LandingPage() {
   }
 
   return (
-    <Container
-      fluid
-      style={{
-        paddingLeft: '0',
-        paddingRight: '0'
-      }}
-    >
+    <>
       <MainNav page="LandingPage" />
-      <Stack style={{ alignItems: 'center', marginTop: '10vh' }} gap={1}>
+      <Stack style={{ alignItems: 'center', padding: '2vh 2vw' }} gap={1}>
         <h2 style={{ color: 'white', textAlign: 'center', width: '50%' }}>
           See what movies your friends are watching, connect with a vibrant
           community of film lovers - Join FilmFlix today!
@@ -33,6 +27,6 @@ export default function LandingPage() {
           Create an Account!
         </Button>
       </Stack>
-    </Container>
+    </>
   );
 }

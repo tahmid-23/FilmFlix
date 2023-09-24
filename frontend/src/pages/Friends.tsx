@@ -1,4 +1,4 @@
-import { Container, Button } from 'react-bootstrap';
+import { Button, Stack } from 'react-bootstrap';
 import '../main.css';
 
 import MainNav from '../components/MainNav';
@@ -34,15 +34,16 @@ export default function Friends() {
   } else {
     content = (
       <>
-        <div style={{ display: 'flex', marginTop: '2vh', marginLeft: '1vw' }}>
-          <h1
-            style={{ fontSize: '25 rem', color: 'white', paddingRight: '1vw' }}
-          >
-            <b>Friends {`(${listOfFriends.length})`}</b>
-          </h1>
-          <Button onClick={() => setShowPopup(true)}>
-            <AiOutlineUserAdd size={35} />
-          </Button>
+        <div style={{ display: 'flex' }}>
+          <Stack direction="horizontal" gap={2}>
+            <h1 style={{ fontSize: '25 rem' }}>
+              <b>Friends {`(${listOfFriends.length})`}</b>
+            </h1>
+            <Button onClick={() => setShowPopup(true)}>
+              <AiOutlineUserAdd size={35} />
+            </Button>
+          </Stack>
+
           <div style={{ paddingTop: '2em' }}>
             <FriendPopup
               show={show}
@@ -73,15 +74,9 @@ export default function Friends() {
   }
 
   return (
-    <Container
-      fluid
-      style={{
-        paddingLeft: '0',
-        paddingRight: '0'
-      }}
-    >
+    <>
       <MainNav page="Friends" />
-      {content}
-    </Container>
+      <div style={{ padding: '2vh 2vw' }}>{content}</div>
+    </>
   );
 }

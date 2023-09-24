@@ -44,13 +44,11 @@ const WatchList = () => {
           );
         }}
       >
-        <Container style={{ paddingTop: '8px' }}>
+        <Container>
           <Row>
             <Col className="col-2" />
             <Col className="col-10">
-              <h1 style={{ textAlign: 'center', color: 'white' }}>
-                Add to Watchlist
-              </h1>
+              <h1 style={{ textAlign: 'center' }}>Add to Watchlist</h1>
             </Col>
           </Row>
           <div className="form-group row" style={{ marginBottom: '15px' }}>
@@ -85,17 +83,10 @@ const WatchList = () => {
   }
 
   return (
-    <Container
-      fluid
-      style={{
-        paddingLeft: '0',
-        paddingRight: '0',
-        paddingBottom: '15'
-      }}
-    >
+    <>
       <MainNav page="Review" />
-      {content}
-    </Container>
+      <div style={{ padding: '2vh 2vw' }}>{content}</div>
+    </>
   );
 };
 

@@ -39,7 +39,10 @@ export default function SearchBar() {
   return (
     <div className="input-group rounded-lg">
       <Container className="justify-content-center">
-        <Row className="justify-content-center" style={{ paddingTop: '25px' }}>
+        <Row
+          className="justify-content-center"
+          style={{ paddingBottom: '1vh' }}
+        >
           <Col className="col-8">
             <input
               onChange={(e) => {

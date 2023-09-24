@@ -43,7 +43,7 @@ const Review = () => {
           });
         }}
       >
-        <Container style={{ paddingTop: '8px' }}>
+        <Container>
           <Row>
             <Col className="col-2" />
             <Col className="col-10">
@@ -102,17 +102,10 @@ const Review = () => {
   }
 
   return (
-    <Container
-      fluid
-      style={{
-        paddingLeft: '0',
-        paddingRight: '0',
-        paddingBottom: '15'
-      }}
-    >
+    <>
       <MainNav page="Review" />
-      {content}
-    </Container>
+      <div style={{ padding: '2vh 2vw' }}>{content}</div>
+    </>
   );
 };
 

@@ -1,5 +1,4 @@
 import { FormEvent, useEffect, useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
