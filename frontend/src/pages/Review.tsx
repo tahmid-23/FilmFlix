@@ -27,7 +27,8 @@ const Review = ({ title }: ReviewProps) => {
       fluid
       style={{
         paddingLeft: '0',
-        paddingRight: '0'
+        paddingRight: '0',
+        paddingBottom: '15'
       }}
     >
       <MainNav page="LandingPage" />
@@ -43,13 +44,16 @@ const Review = ({ title }: ReviewProps) => {
           addReview(title, rating, description, accessToken);
         }}
       >
-        <Container>
+        <Container style={{ paddingTop: '8px' }}>
           <Row>
-            <h1 style={{ textAlign: 'center', color: 'white' }}>
-              Movie Review
-            </h1>
+            <Col className="col-2"></Col>
+            <Col className="col-10">
+              <h1 style={{ textAlign: 'center', color: 'white' }}>
+                Movie Review
+              </h1>
+            </Col>
           </Row>
-          <div className="form-group row">
+          <div className="form-group row" style={{ marginBottom: '15px' }}>
             <Col className="col-2">
               <Form.Label style={{ color: 'white' }}>Movie Title:</Form.Label>
             </Col>
@@ -62,7 +66,7 @@ const Review = ({ title }: ReviewProps) => {
               />
             </Col>
           </div>
-          <div className="form-group row">
+          <div className="form-group row" style={{ marginBottom: '15px' }}>
             <Col className="col-2">
               <Form.Label style={{ color: 'white' }}>Rating:</Form.Label>
             </Col>
@@ -75,7 +79,7 @@ const Review = ({ title }: ReviewProps) => {
               />
             </Col>
           </div>
-          <div className="form-group row">
+          <div className="form-group row" style={{ marginBottom: '15px' }}>
             <Col className="col-2">
               <Form.Label style={{ color: 'white' }}>Comments:</Form.Label>
             </Col>
@@ -88,8 +92,10 @@ const Review = ({ title }: ReviewProps) => {
               />
             </Col>
           </div>
-          <Row style={{ flexBasis: '0' }}>
-            <Button type="submit">Submit</Button>
+          <Row style={{ justifyContent: 'flex-end', paddingRight: '10px' }}>
+            <Button type="submit" style={{ width: '200px', marginRight: '0' }}>
+              Submit
+            </Button>
           </Row>
         </Container>
       </Form>
