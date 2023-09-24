@@ -59,8 +59,30 @@ async function getAccountIdOrCreate(
   return newRows[0].account_id;
 }
 
+app.get('/api/id', async (req, res) => {
+  const token = req.auth?.token;
+  const sub = req.auth?.payload.sub;
+  if (!token || !sub) {
+    res.sendStatus(500);
+    return;
+  }
+
+  const connection = await pool.getConnection();
+
+  try {
+    const accountId = await getAccountIdOrCreate(connection, token, sub);
+    res.json(accountId);
+  } catch (e) {
+    console.error(e);
+    res.sendStatus(500);
+  } finally {
+    connection.end();
+  }
+});
+
 app.get('/api/user/:id', async (req: Request<{ id: number }>, res) => {
   const connection = await pool.getConnection();
+
   try {
     const accounts = await connection.query(
       'SELECT name, bio FROM account WHERE account_id = ?',
