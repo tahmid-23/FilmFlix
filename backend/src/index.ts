@@ -195,7 +195,7 @@ interface RequestWithBody<T> extends Request {
 app.use(express.json());
 
 interface FriendBody {
-  username: string;
+  email: string;
 }
 
 app.post('/api/add-friend', async (req: RequestWithBody<FriendBody>, res) => {
@@ -210,8 +210,8 @@ app.post('/api/add-friend', async (req: RequestWithBody<FriendBody>, res) => {
   try {
     const senderId = await getAccountIdOrCreate(connection, token, sub);
     const targets = await connection.query(
-      'SELECT account_id FROM account WHERE name = ?',
-      [req.body.username]
+      'SELECT account_id FROM account WHERE email = ?',
+      [req.body.email]
     );
     if (targets.length === 0) {
       res.status(404);

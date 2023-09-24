@@ -42,7 +42,7 @@ export default function FriendPopup({ show, setVisible }: FriendPopupInput) {
 
               const formData = new FormData(e.currentTarget);
 
-              const username = formData.get('username')!.toString();
+              const username = formData.get('email')!.toString();
 
               addFriend(username, accessToken);
             }}
@@ -51,12 +51,8 @@ export default function FriendPopup({ show, setVisible }: FriendPopupInput) {
               <Modal.Title>Add a friend:</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <Form.Label>Enter a username</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Username"
-                name="username"
-              />
+              <Form.Label>Enter an email</Form.Label>
+              <Form.Control type="text" placeholder="Email" name="email" />
             </Modal.Body>
             <Modal.Footer>
               <Button variant="secondary" onClick={() => setVisible(false)}>
