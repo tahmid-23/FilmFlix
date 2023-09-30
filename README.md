@@ -1,8 +1,8 @@
 # FilmFlix
-Social media website for movie lovers made in 24 hrs at HackUMBC.
+Award-winning social media website for movie lovers made in 24 hrs at HackUMBC. 
 
 ## Live Demo
-N/A
+[Website](https://filmflixpro.netlify.app/feed)
 
 ## Screenshots
 ![image](https://github.com/tahmid-23/FilmFlix/assets/109867418/e6a8f088-8142-4e66-a453-a39c822dde8a)
