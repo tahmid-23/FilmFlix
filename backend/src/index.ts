@@ -9,10 +9,10 @@ const app = express();
 app.use(cors());
 
 const pool = createPool({
-  host: 'localhost',
-  user: 'hackumbc',
-  database: 'hackumbc',
-  password: 'hackumbc'
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  database: 'filmflix',
+  password: process.env.DB_PASSWORD
 });
 
 app.use(
