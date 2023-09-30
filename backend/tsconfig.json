@@ -3,6 +3,7 @@
     "lib": ["ES2022"],
     "module": "ESNext",
     "target": "ESNext",
+    "outDir": "./dist",
 
     "strict": true,
     "esModuleInterop": true,
