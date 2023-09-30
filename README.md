@@ -15,7 +15,6 @@ Award-winning social media website for movie lovers made in 24 hrs at HackUMBC.
 Before you begin, ensure you have met the following requirements:
   - [Git](https://git-scm.com/downloads) must be installed on your operating system.
   - [Node.js 18.18.0](https://nodejs.org/en)
-  - ...
 
 ## Installing FilmFlix
 1. Clone the repository to your local machine w/ the following command:\
