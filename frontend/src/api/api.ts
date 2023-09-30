@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://10.200.152.96:3000';
+const API_BASE_URL = 'https://filmflix.fly.dev';
 
 function getApi(route: string, token: string) {
   return fetch(`${API_BASE_URL}${route}`, {
