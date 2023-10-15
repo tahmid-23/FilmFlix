@@ -1,6 +1,12 @@
 # FilmFlix
 Award-winning social media website for movie lovers made in 24 hrs at HackUMBC. 
 
+### Key Features:
+- Implemented secure user authentication via Auth0.
+- Designed and implemented interactive friends list and user profiles to enhance community engagement.
+- Incorporated functionality for users to leave reviews, create personalized watchlists, and perform efficient movie searches using API integration.
+- Created a friend feed, allowing users to stay updated with their friends' activities in real time
+
 ## Live Demo
 [Website](https://filmflixpro.netlify.app/feed)
 
